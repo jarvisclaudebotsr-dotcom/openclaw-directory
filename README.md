@@ -1,102 +1,135 @@
-# OpenClaw Directory 🦞
+# OpenClaw Directory
 
-**Premium Skills Marketplace for OpenClaw AI Assistants**
+Premium skills marketplace for OpenClaw agents. Browse, search, and purchase high-quality agent skills from verified creators.
 
-A production-ready marketplace where developers can sell and buy premium OpenClaw skills and templates.
+## 🚀 Features
 
-## 🚀 Live Demo
+- **Browse Premium Skills**: Curated marketplace of production-ready agent skills
+- **Advanced Search**: Filter by category, price, rating, and compatibility
+- **Skill Details**: View documentation, demos, reviews, and changelog
+- **Secure Checkout**: Stripe integration for payments
+- **Instant Delivery**: Download skills immediately after purchase
+- **Creator Dashboard**: Manage your published skills and earnings
 
-Deployed at: [Coming Soon - Vercel Deployment]
+## 🛠️ Tech Stack
 
-## 💡 The Idea
-
-OpenClaw/OpenClawd has a free public registry (ClawHub) for open-source skills. **OpenClaw Directory** fills the gap by providing a marketplace for premium/paid skills, allowing creators to monetize their expertise.
-
-## ✨ Features
-
-- 🎨 **Beautiful Design** - Clean, modern UI with glassmorphism effects
-- 🔍 **Skill Discovery** - Browse and search premium skills
-- 👤 **Creator Profiles** - Showcase your skills and build reputation
-- 💳 **Payment Processing** - Secure checkout with Stripe
-- 📊 **Analytics** - Track sales and earnings
-- 🚀 **One-Click Install** - Skills integrate directly with OpenClaw
-
-## 🛠 Tech Stack
-
-- **Framework**: Next.js 15 (App Router)
+- **Frontend**: Next.js 14, React 18, TypeScript
 - **Styling**: Tailwind CSS
+- **Database**: Supabase (PostgreSQL)
+- **Payments**: Stripe
 - **Deployment**: Vercel
-- **Payments**: Stripe (Integration in progress)
-- **Database**: (TBD - Likely Supabase or PlanetScale)
 
-## 📦 Installation
+## 📦 Database Schema
+
+```sql
+-- Skills table
+create table skills (
+  id uuid primary key default uuid_generate_v4(),
+  name text not null,
+  slug text unique not null,
+  description text,
+  price decimal(10,2) not null,
+  category text not null,
+  creator_id uuid references auth.users(id),
+  downloads integer default 0,
+  rating decimal(2,1),
+  created_at timestamp with time zone default now()
+);
+
+-- Purchases table
+create table purchases (
+  id uuid primary key default uuid_generate_v4(),
+  user_id uuid references auth.users(id),
+  skill_id uuid references skills(id),
+  price decimal(10,2) not null,
+  stripe_payment_id text,
+  created_at timestamp with time zone default now()
+);
+
+-- Reviews table
+create table reviews (
+  id uuid primary key default uuid_generate_v4(),
+  skill_id uuid references skills(id),
+  user_id uuid references auth.users(id),
+  rating integer check (rating >= 1 and rating <= 5),
+  comment text,
+  created_at timestamp with time zone default now()
+);
+```
+
+## 🔧 Environment Variables
 
 ```bash
-# Clone the repository
-git clone https://github.com/[username]/openclawmart.git
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+
+# Stripe
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
+STRIPE_SECRET_KEY=your_stripe_secret_key
+STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
+```
+
+## 📥 Installation
+
+```bash
+# Clone the repo
+git clone https://github.com/jarvisclaudebotsr-dotcom/openclaw-directory.git
+cd openclaw-directory
 
 # Install dependencies
 npm install
+
+# Set up environment variables
+cp .env.example .env.local
+# Edit .env.local with your credentials
 
 # Run development server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see the marketplace.
+## 🚢 Deployment
+
+Deployed on Vercel with automatic deployments from `main` branch.
+
+**Live URL**: TBD (pending deployment)
+
+## 📝 API Routes
+
+- `POST /api/skills` - Create new skill (authenticated)
+- `GET /api/skills` - List all skills
+- `GET /api/skills/[id]` - Get skill details
+- `POST /api/purchase` - Purchase a skill (authenticated)
+- `POST /api/webhook` - Stripe webhook handler
 
 ## 🎯 Roadmap
 
-### Phase 1: MVP (Current)
-- [x] Landing page with featured skills
-- [x] Responsive design
-- [ ] Skill detail pages
-- [ ] Creator profiles
-
-### Phase 2: Payments
-- [ ] Stripe integration
-- [ ] Checkout flow
-- [ ] License key generation
-- [ ] Download delivery
-
-### Phase 3: Community
-- [ ] User authentication
-- [ ] Reviews and ratings
-- [ ] Skill recommendations
-- [ ] Creator dashboard
-
-### Phase 4: Advanced
-- [ ] Skill templates
-- [ ] Bundle deals
-- [ ] Subscription tiers
-- [ ] API access
-
-## 💰 Pricing Model
-
-- **Commission**: 10% platform fee on sales
-- **Creator payout**: 90% of sale price
-- **Minimum price**: $9
-- **Payment processing**: Via Stripe Connect
+- [ ] Skill versioning and updates
+- [ ] API authentication for skill downloads
+- [ ] Creator earnings dashboard
+- [ ] Skill compatibility checker
+- [ ] User wishlists
+- [ ] Affiliate program
+- [ ] Skill bundles
 
 ## 🤝 Contributing
 
-This is an open marketplace for the OpenClaw community. Contributions welcome!
-
 1. Fork the repo
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add AmazingFeature'`)
-4. Push to branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
 
 ## 📄 License
 
-MIT License - feel free to fork and build!
+MIT License - see LICENSE file for details
 
-## 🙏 Credits
+## 🔗 Links
 
-Built for the [OpenClaw](https://openclaw.ai) / [OpenClawd](https://openclawd.ai) community.
-
-Inspired by the $1M idea tweet from [@starter_story](https://twitter.com/starter_story).
+- **GitHub**: https://github.com/jarvisclaudebotsr-dotcom/openclaw-directory
+- **OpenClaw Docs**: https://docs.openclaw.ai
+- **Discord**: https://discord.gg/openclaw
 
 ---
 
-**Built with ❤️ for the AI agent revolution**
+Built with ❤️ for the OpenClaw community
