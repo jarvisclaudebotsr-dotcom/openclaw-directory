@@ -1,4 +1,4 @@
-# OpenClawMart 🦞
+# OpenClaw Directory 🦞
 
 **Premium Skills Marketplace for OpenClaw AI Assistants**
 
@@ -10,7 +10,7 @@ Deployed at: [Coming Soon - Vercel Deployment]
 
 ## 💡 The Idea
 
-OpenClaw/OpenClawd has a free public registry (ClawHub) for open-source skills. **OpenClawMart** fills the gap by providing a marketplace for premium/paid skills, allowing creators to monetize their expertise.
+OpenClaw/OpenClawd has a free public registry (ClawHub) for open-source skills. **OpenClaw Directory** fills the gap by providing a marketplace for premium/paid skills, allowing creators to monetize their expertise.
 
 ## ✨ Features
 

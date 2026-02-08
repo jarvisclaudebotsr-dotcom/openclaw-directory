@@ -6,7 +6,7 @@ export default function Home() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-2">
               <span className="text-2xl">🦞</span>
-              <span className="text-xl font-bold text-white">OpenClawMart</span>
+              <span className="text-xl font-bold text-white">OpenClaw Directory</span>
             </div>
             <div className="flex items-center space-x-6">
               <a href="#skills" className="text-gray-300 hover:text-white transition">Skills</a>
@@ -125,7 +125,7 @@ export default function Home() {
             Ready to monetize your OpenClaw skills?
           </h2>
           <p className="text-purple-100 mb-8 max-w-2xl mx-auto">
-            Join 43 creators earning passive income by selling their skills on OpenClawMart
+            Join 43 creators earning passive income by selling their skills on OpenClaw Directory
           </p>
           <button className="px-8 py-3 bg-white text-purple-600 hover:bg-gray-100 rounded-lg font-semibold text-lg transition">
             Start Selling Today
@@ -140,7 +140,7 @@ export default function Home() {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <span className="text-2xl">🦞</span>
-                <span className="text-xl font-bold text-white">OpenClawMart</span>
+                <span className="text-xl font-bold text-white">OpenClaw Directory</span>
               </div>
               <p className="text-gray-400 text-sm">
                 Premium marketplace for OpenClaw skills and templates
@@ -172,7 +172,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-white/10 mt-12 pt-8 text-center text-gray-400 text-sm">
-            © 2026 OpenClawMart. Built for the OpenClaw community.
+            © 2026 OpenClaw Directory. Built for the OpenClaw community.
           </div>
         </div>
       </footer>
