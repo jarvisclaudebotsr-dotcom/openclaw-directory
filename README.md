@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# OpenClawMart 🦞
 
-## Getting Started
+**Premium Skills Marketplace for OpenClaw AI Assistants**
 
-First, run the development server:
+A production-ready marketplace where developers can sell and buy premium OpenClaw skills and templates.
+
+## 🚀 Live Demo
+
+Deployed at: [Coming Soon - Vercel Deployment]
+
+## 💡 The Idea
+
+OpenClaw/OpenClawd has a free public registry (ClawHub) for open-source skills. **OpenClawMart** fills the gap by providing a marketplace for premium/paid skills, allowing creators to monetize their expertise.
+
+## ✨ Features
+
+- 🎨 **Beautiful Design** - Clean, modern UI with glassmorphism effects
+- 🔍 **Skill Discovery** - Browse and search premium skills
+- 👤 **Creator Profiles** - Showcase your skills and build reputation
+- 💳 **Payment Processing** - Secure checkout with Stripe
+- 📊 **Analytics** - Track sales and earnings
+- 🚀 **One-Click Install** - Skills integrate directly with OpenClaw
+
+## 🛠 Tech Stack
+
+- **Framework**: Next.js 15 (App Router)
+- **Styling**: Tailwind CSS
+- **Deployment**: Vercel
+- **Payments**: Stripe (Integration in progress)
+- **Database**: (TBD - Likely Supabase or PlanetScale)
+
+## 📦 Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/[username]/openclawmart.git
+
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the marketplace.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🎯 Roadmap
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Phase 1: MVP (Current)
+- [x] Landing page with featured skills
+- [x] Responsive design
+- [ ] Skill detail pages
+- [ ] Creator profiles
 
-## Learn More
+### Phase 2: Payments
+- [ ] Stripe integration
+- [ ] Checkout flow
+- [ ] License key generation
+- [ ] Download delivery
 
-To learn more about Next.js, take a look at the following resources:
+### Phase 3: Community
+- [ ] User authentication
+- [ ] Reviews and ratings
+- [ ] Skill recommendations
+- [ ] Creator dashboard
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Phase 4: Advanced
+- [ ] Skill templates
+- [ ] Bundle deals
+- [ ] Subscription tiers
+- [ ] API access
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 💰 Pricing Model
 
-## Deploy on Vercel
+- **Commission**: 10% platform fee on sales
+- **Creator payout**: 90% of sale price
+- **Minimum price**: $9
+- **Payment processing**: Via Stripe Connect
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🤝 Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This is an open marketplace for the OpenClaw community. Contributions welcome!
+
+1. Fork the repo
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+MIT License - feel free to fork and build!
+
+## 🙏 Credits
+
+Built for the [OpenClaw](https://openclaw.ai) / [OpenClawd](https://openclawd.ai) community.
+
+Inspired by the $1M idea tweet from [@starter_story](https://twitter.com/starter_story).
+
+---
+
+**Built with ❤️ for the AI agent revolution**
