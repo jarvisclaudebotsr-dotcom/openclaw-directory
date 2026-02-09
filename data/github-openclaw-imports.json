@@ -1,0 +1,182 @@
+[
+  {
+    "name": "Apple Reminders",
+    "slug": "apple-reminders",
+    "description": "Manage Apple Reminders via the remindctl CLI on macOS. List, add, edit, complete, delete reminders with support for lists, date filters, and JSON output.",
+    "category": "Productivity",
+    "price": 0,
+    "tags": ["reminders", "macos", "productivity"],
+    "featured": false,
+    "source": "github.com/openclaw/clawhub"
+  },
+  {
+    "name": "Bird (X/Twitter CLI)",
+    "slug": "bird",
+    "description": "X/Twitter CLI for reading, searching, posting, and engagement via cookies. Full Twitter automation and monitoring capabilities.",
+    "category": "Social Media",
+    "price": 0,
+    "tags": ["twitter", "social-media", "automation"],
+    "featured": false,
+    "source": "github.com/openclaw/clawhub"
+  },
+  {
+    "name": "BluCLI",
+    "slug": "blucli",
+    "description": "BluOS CLI for discovery, playback, grouping, and volume control. Connect to BluOS-enabled speakers and devices.",
+    "category": "Media",
+    "price": 0,
+    "tags": ["audio", "speakers", "media"],
+    "featured": false,
+    "source": "github.com/openclaw/clawhub"
+  },
+  {
+    "name": "BlueBubbles",
+    "slug": "bluebubbles",
+    "description": "Build or update the BlueBubbles external channel plugin for Clawdbot. Connect iMessage to your agent via REST API and webhooks.",
+    "category": "Communication",
+    "price": 0,
+    "tags": ["imessage", "messaging", "integration"],
+    "featured": false,
+    "source": "github.com/openclaw/clawhub"
+  },
+  {
+    "name": "CamSnap",
+    "slug": "camsnap",
+    "description": "Capture frames or clips from RTSP/ONVIF cameras. Monitor security cameras and capture video/images on demand.",
+    "category": "Utilities",
+    "price": 0,
+    "tags": ["camera", "security", "monitoring"],
+    "featured": false,
+    "source": "github.com/openclaw/clawhub"
+  },
+  {
+    "name": "ClawHub",
+    "slug": "clawdhub",
+    "description": "Use the ClawHub CLI to search, install, update, and publish agent skills from clawdhub.com. Browse and sync skills on the fly.",
+    "category": "Core",
+    "price": 0,
+    "tags": ["skills", "registry", "clawdhub"],
+    "featured": true,
+    "source": "github.com/openclaw/clawhub"
+  },
+  {
+    "name": "Coding Agent",
+    "slug": "coding-agent",
+    "description": "Run Codex CLI, Claude Code, OpenCode, or Pi Coding Agent via background process for programmatic control. Build and debug code autonomously.",
+    "category": "Development",
+    "price": 0,
+    "tags": ["coding", "ai", "automation"],
+    "featured": true,
+    "source": "github.com/openclaw/clawhub"
+  },
+  {
+    "name": "Gemini",
+    "slug": "gemini",
+    "description": "Gemini CLI for one-shot Q&A, summaries, and generation. Access Google's Gemini AI models for fast content generation.",
+    "category": "AI Tools",
+    "price": 0,
+    "tags": ["ai", "gemini", "generation"],
+    "featured": false,
+    "source": "github.com/openclaw/clawhub"
+  },
+  {
+    "name": "GitHub",
+    "slug": "github",
+    "description": "Interact with GitHub using the gh CLI. Manage issues, PRs, CI runs, and advanced queries with GitHub API access.",
+    "category": "Development",
+    "price": 0,
+    "tags": ["github", "git", "development"],
+    "featured": true,
+    "source": "github.com/openclaw/clawhub"
+  },
+  {
+    "name": "GoG (Google Workspace)",
+    "slug": "gog",
+    "description": "Google Workspace CLI for Gmail, Calendar, Drive, Contacts, Sheets, and Docs. Full Google Workspace automation.",
+    "category": "Productivity",
+    "price": 0,
+    "tags": ["google", "workspace", "productivity"],
+    "featured": true,
+    "source": "github.com/openclaw/clawhub"
+  },
+  {
+    "name": "MCPorter",
+    "slug": "mcporter",
+    "description": "Use the mcporter CLI to list, configure, auth, and call MCP servers/tools directly (HTTP or stdio). Connect to any MCP server.",
+    "category": "Integration",
+    "price": 0,
+    "tags": ["mcp", "integration", "tools"],
+    "featured": false,
+    "source": "github.com/openclaw/clawhub"
+  },
+  {
+    "name": "Nano PDF",
+    "slug": "nano-pdf",
+    "description": "Edit PDFs with natural-language instructions using the nano-pdf CLI. Modify PDFs through conversational commands.",
+    "category": "Utilities",
+    "price": 0,
+    "tags": ["pdf", "editing", "documents"],
+    "featured": false,
+    "source": "github.com/openclaw/clawhub"
+  },
+  {
+    "name": "Notion",
+    "slug": "notion",
+    "description": "Notion API for creating and managing pages, databases, and blocks. Full Notion workspace integration.",
+    "category": "Productivity",
+    "price": 0,
+    "tags": ["notion", "productivity", "database"],
+    "featured": true,
+    "source": "github.com/openclaw/clawhub"
+  },
+  {
+    "name": "Skill Creator",
+    "slug": "skill-creator",
+    "description": "Create or update AgentSkills. Design, structure, and package skills with scripts, references, and assets.",
+    "category": "Development",
+    "price": 0,
+    "tags": ["skills", "creation", "development"],
+    "featured": false,
+    "source": "github.com/openclaw/clawhub"
+  },
+  {
+    "name": "Slack",
+    "slug": "slack",
+    "description": "Control Slack from Clawdbot including reacting to messages and pinning/unpinning items in channels or DMs.",
+    "category": "Communication",
+    "price": 0,
+    "tags": ["slack", "messaging", "team"],
+    "featured": true,
+    "source": "github.com/openclaw/clawhub"
+  },
+  {
+    "name": "Summarize",
+    "slug": "summarize",
+    "description": "Summarize or extract text/transcripts from URLs, podcasts, and local files. Great fallback for transcribing YouTube videos.",
+    "category": "Utilities",
+    "price": 0,
+    "tags": ["summarization", "transcription", "content"],
+    "featured": true,
+    "source": "github.com/openclaw/clawhub"
+  },
+  {
+    "name": "Video Frames",
+    "slug": "video-frames",
+    "description": "Extract frames or short clips from videos using ffmpeg. Capture specific moments from video files.",
+    "category": "Media",
+    "price": 0,
+    "tags": ["video", "frames", "media"],
+    "featured": false,
+    "source": "github.com/openclaw/clawhub"
+  },
+  {
+    "name": "Weather",
+    "slug": "weather",
+    "description": "Get current weather and forecasts (no API key required). Simple weather lookups for any location.",
+    "category": "Utilities",
+    "price": 0,
+    "tags": ["weather", "forecast", "utilities"],
+    "featured": false,
+    "source": "github.com/openclaw/clawhub"
+  }
+]
