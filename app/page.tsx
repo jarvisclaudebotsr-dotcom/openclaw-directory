@@ -1,241 +1,364 @@
 import Link from 'next/link';
-import { Search, Zap, Shield, TrendingUp } from 'lucide-react';
+
+interface Skill {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  price: number;
+  creator: string;
+  installs?: number;
+  featured?: boolean;
+}
+
+const skills: Record<string, Skill[]> = {
+  featured: [
+    {
+      id: 'meta-ad-research',
+      name: 'Meta Ad Research',
+      description: 'Research competitor ads via Meta Ad Library and summarize creative trends.',
+      category: 'Marketing',
+      price: 49,
+      creator: 'Jarvis',
+      installs: 234,
+      featured: true
+    },
+    {
+      id: 'clickup-melts',
+      name: 'ClickUp Melts System',
+      description: 'Manage Active Tests, Hook Bank, and Angle Library in ClickUp.',
+      category: 'Marketing',
+      price: 99,
+      creator: 'Jarvis',
+      installs: 189,
+      featured: true
+    },
+    {
+      id: 'x-research',
+      name: 'X Research Agent',
+      description: 'Search X in real time, track conversations, and surface trend signals.',
+      category: 'Research',
+      price: 39,
+      creator: 'Jarvis',
+      installs: 445,
+      featured: true
+    },
+    {
+      id: 'github-manager',
+      name: 'GitHub Repo Manager',
+      description: 'Manage repos, pull requests, and CI workflows with one command.',
+      category: 'Development',
+      price: 39,
+      creator: 'DevTools Co',
+      installs: 756,
+      featured: true
+    }
+  ],
+  marketing: [
+    {
+      id: 'google-ads-optimizer',
+      name: 'Google Ads Optimizer',
+      description: 'Automated Google Ads campaign optimization and reporting.',
+      category: 'Marketing',
+      price: 79,
+      creator: 'AdTech Labs',
+      installs: 156
+    },
+    {
+      id: 'shopify-analytics',
+      name: 'Shopify Analytics Suite',
+      description: 'Deep dive into Shopify store performance and customer behavior.',
+      category: 'Marketing',
+      price: 59,
+      creator: 'EcomTools',
+      installs: 312
+    },
+    {
+      id: 'retention-engine',
+      name: 'Retention Engine',
+      description: 'Cohort analysis and retention insights for lifecycle marketing.',
+      category: 'Marketing',
+      price: 89,
+      creator: 'Lifecycle Lab',
+      installs: 204
+    },
+    {
+      id: 'offer-generator',
+      name: 'Offer Generator',
+      description: 'Create offer stacks and pricing experiments in minutes.',
+      category: 'Marketing',
+      price: 45,
+      creator: 'Growth Studio',
+      installs: 167
+    }
+  ],
+  research: [
+    {
+      id: 'competitor-intel',
+      name: 'Competitor Intelligence',
+      description: 'Track competitor moves, pricing changes, and market positioning.',
+      category: 'Research',
+      price: 69,
+      creator: 'DataScout',
+      installs: 178
+    },
+    {
+      id: 'patent-search',
+      name: 'Patent Search & Analysis',
+      description: 'Search USPTO, analyze claims, and surface prior art quickly.',
+      category: 'Research',
+      price: 89,
+      creator: 'LegalTech AI',
+      installs: 92
+    },
+    {
+      id: 'market-research',
+      name: 'Market Research Automator',
+      description: 'Automated market sizing, TAM/SAM/SOM analysis, and signals.',
+      category: 'Research',
+      price: 119,
+      creator: 'StrategyBot',
+      installs: 134
+    },
+    {
+      id: 'user-interviews',
+      name: 'User Interview Synth',
+      description: 'Summarize transcripts into insights, themes, and action items.',
+      category: 'Research',
+      price: 55,
+      creator: 'InsightWorks',
+      installs: 211
+    }
+  ],
+  productivity: [
+    {
+      id: 'clickup-integration',
+      name: 'ClickUp Task Manager',
+      description: 'Full ClickUp integration for tasks, docs, and timelines.',
+      category: 'Productivity',
+      price: 29,
+      creator: 'ProductivityHub',
+      installs: 892
+    },
+    {
+      id: 'notion-database',
+      name: 'Notion Database Manager',
+      description: 'Create and manage Notion databases, pages, and blocks.',
+      category: 'Productivity',
+      price: 35,
+      creator: 'NotionPro',
+      installs: 671
+    },
+    {
+      id: 'calendar-assistant',
+      name: 'Smart Calendar Assistant',
+      description: 'Schedule meetings, find optimal times, and manage calendars.',
+      category: 'Productivity',
+      price: 25,
+      creator: 'TimeWise',
+      installs: 523
+    },
+    {
+      id: 'email-automation',
+      name: 'Email Automation Suite',
+      description: 'Smart email filtering, auto-responses, follow-up sequences.',
+      category: 'Productivity',
+      price: 45,
+      creator: 'MailBot',
+      installs: 389
+    }
+  ],
+  development: [
+    {
+      id: 'api-tester',
+      name: 'API Testing & Docs',
+      description: 'Test APIs, generate documentation, and monitor endpoints.',
+      category: 'Development',
+      price: 49,
+      creator: 'APIKit',
+      installs: 445
+    },
+    {
+      id: 'code-reviewer',
+      name: 'AI Code Reviewer',
+      description: 'Automated code review, security scanning, and best practices.',
+      category: 'Development',
+      price: 79,
+      creator: 'CodeGuard',
+      installs: 312
+    },
+    {
+      id: 'db-optimizer',
+      name: 'Database Query Optimizer',
+      description: 'Analyze and optimize SQL queries, suggest indexes.',
+      category: 'Development',
+      price: 69,
+      creator: 'DBMaster',
+      installs: 234
+    },
+    {
+      id: 'release-notes',
+      name: 'Release Notes Writer',
+      description: 'Generate polished release notes from commit histories.',
+      category: 'Development',
+      price: 29,
+      creator: 'ShipIt',
+      installs: 188
+    }
+  ]
+};
+
+const sectionOrder = [
+  { key: 'featured', title: 'Featured Skills', href: '/skills/featured' },
+  { key: 'marketing', title: 'Marketing', href: '/categories/marketing' },
+  { key: 'research', title: 'Research', href: '/categories/research' },
+  { key: 'productivity', title: 'Productivity', href: '/categories/productivity' },
+  { key: 'development', title: 'Development', href: '/categories/development' }
+] as const;
+
+const SectionHeader = ({ title, href }: { title: string; href: string }) => (
+  <div className="flex items-center justify-between mb-5">
+    <h2 className="text-white text-lg font-medium tracking-tight">{title}</h2>
+    <Link href={href} className="text-xs text-gray-400 hover:text-white transition-colors">
+      View all →
+    </Link>
+  </div>
+);
+
+const SkillCard = ({ skill }: { skill: Skill }) => (
+  <Link
+    href={`/skills/${skill.id}`}
+    className="group relative block rounded-xl border border-[#2a2a2a] bg-[#121212] p-4 transition-colors hover:border-[#3a3a3a]"
+  >
+    <div className="absolute right-4 top-4 rounded-full border border-[#2a2a2a] bg-black px-2.5 py-1 text-[11px] text-white">
+      ${skill.price}
+    </div>
+    <div className="mb-3 flex items-center gap-3">
+      <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#2a2a2a] bg-[#161616] text-[11px] text-gray-400">
+        {skill.name
+          .split(' ')
+          .slice(0, 2)
+          .map(word => word[0])
+          .join('')}
+      </div>
+      <div>
+        <div className="text-sm font-medium text-white group-hover:text-white">
+          {skill.name}
+        </div>
+        <div className="text-xs text-gray-500">{skill.category}</div>
+      </div>
+    </div>
+    <p className="text-sm text-gray-400 leading-relaxed line-clamp-2">
+      {skill.description}
+    </p>
+    <div className="mt-4 flex items-center justify-between text-xs text-gray-500">
+      <span>{skill.creator}</span>
+      {skill.installs ? <span>{skill.installs} installs</span> : null}
+    </div>
+  </Link>
+);
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900">
-      {/* Hero Section */}
-      <div className="container mx-auto px-4 py-20">
-        <div className="text-center">
-          <h1 className="text-6xl font-bold text-white mb-6">
-            OpenClaw <span className="text-purple-400">Directory</span>
+    <div className="min-h-screen bg-black text-white">
+      <header className="sticky top-0 z-50 border-b border-[#1f1f1f] bg-black/95 backdrop-blur">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
+          <Link href="/" className="text-sm font-semibold tracking-tight">
+            OpenClaw
+          </Link>
+          <nav className="flex items-center gap-8 text-xs text-gray-400">
+            <Link href="/skills" className="hover:text-white transition-colors">
+              Skills
+            </Link>
+            <Link href="/categories" className="hover:text-white transition-colors">
+              Categories
+            </Link>
+            <Link href="/creators" className="hover:text-white transition-colors">
+              Creators
+            </Link>
+            <Link href="/docs" className="hover:text-white transition-colors">
+              Docs
+            </Link>
+            <Link
+              href="/login"
+              className="rounded-full bg-white px-4 py-2 text-[11px] font-medium text-black transition-colors hover:bg-gray-200"
+            >
+              Sign in
+            </Link>
+          </nav>
+        </div>
+      </header>
+
+      <main className="mx-auto w-full max-w-6xl px-6 pb-24">
+        <section className="border-b border-[#1f1f1f] py-14 text-center">
+          <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-4">
+            OpenClaw Directory
+          </p>
+          <h1 className="text-3xl md:text-4xl font-medium tracking-tight text-white mb-4">
+            Production-ready skills for OpenClaw agents.
           </h1>
-          <p className="text-2xl text-gray-300 mb-8">
-            Premium skills marketplace for AI agents
+          <p className="mx-auto max-w-2xl text-sm text-gray-400 leading-relaxed">
+            Browse curated capabilities, discover new creators, and install the right
+            skills for your agents in minutes.
           </p>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-12">
-            Browse, buy, and install production-ready capabilities. Build smarter agents faster.
-          </p>
-          
-          <div className="flex gap-4 justify-center">
-            <Link 
-              href="/skills" 
-              className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all transform hover:scale-105"
-            >
-              Browse Skills
+          <div className="mt-8 flex items-center justify-center">
+            <div className="flex w-full max-w-md items-center rounded-full border border-[#2a2a2a] bg-[#0f0f0f] px-4 py-2">
+              <span className="mr-3 text-xs text-gray-500">Search</span>
+              <input
+                type="text"
+                placeholder="Search skills, creators, categories"
+                className="w-full bg-transparent text-sm text-white placeholder:text-gray-600 focus:outline-none"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="py-12">
+          <div className="grid grid-cols-2 gap-4 text-left text-xs text-gray-500 md:grid-cols-4">
+            <div>
+              <div className="text-white text-lg font-medium">120+</div>
+              Skills available
+            </div>
+            <div>
+              <div className="text-white text-lg font-medium">48</div>
+              Verified creators
+            </div>
+            <div>
+              <div className="text-white text-lg font-medium">9.2k</div>
+              Total installs
+            </div>
+            <div>
+              <div className="text-white text-lg font-medium">24h</div>
+              Average approval
+            </div>
+          </div>
+        </section>
+
+        {sectionOrder.map(section => (
+          <section key={section.key} className="mb-14">
+            <SectionHeader title={section.title} href={section.href} />
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {skills[section.key].map(skill => (
+                <SkillCard key={skill.id} skill={skill} />
+              ))}
+            </div>
+          </section>
+        ))}
+      </main>
+
+      <footer className="border-t border-[#1f1f1f] bg-black">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-8 text-xs text-gray-500">
+          <span>© 2026 OpenClaw Directory</span>
+          <div className="flex items-center gap-6">
+            <Link href="/privacy" className="hover:text-white transition-colors">
+              Privacy
             </Link>
-            <Link 
-              href="/creators" 
-              className="border-2 border-purple-400 hover:bg-purple-900/30 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all"
-            >
-              Become a Creator
+            <Link href="/terms" className="hover:text-white transition-colors">
+              Terms
             </Link>
-          </div>
-        </div>
-
-        {/* Stats */}
-        <div className="grid md:grid-cols-3 gap-8 mt-20 text-center">
-          <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6">
-            <div className="text-4xl font-bold text-purple-400 mb-2">50+</div>
-            <div className="text-gray-300">Premium Skills</div>
-          </div>
-          <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6">
-            <div className="text-4xl font-bold text-purple-400 mb-2">1,000+</div>
-            <div className="text-gray-300">Active Agents</div>
-          </div>
-          <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6">
-            <div className="text-4xl font-bold text-purple-400 mb-2">100%</div>
-            <div className="text-gray-300">Production Ready</div>
-          </div>
-        </div>
-      </div>
-
-      {/* Features */}
-      <div className="bg-black/30 py-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-white text-center mb-16">
-            Why OpenClaw Directory?
-          </h2>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-purple-500/20">
-              <Search className="w-12 h-12 text-purple-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Curated Skills</h3>
-              <p className="text-gray-400">
-                Every skill is tested and verified for production use
-              </p>
-            </div>
-            
-            <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-purple-500/20">
-              <Zap className="w-12 h-12 text-purple-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Instant Install</h3>
-              <p className="text-gray-400">
-                One-click installation directly into your agent
-              </p>
-            </div>
-            
-            <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-purple-500/20">
-              <Shield className="w-12 h-12 text-purple-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Secure & Safe</h3>
-              <p className="text-gray-400">
-                Code reviewed and sandboxed for safety
-              </p>
-            </div>
-            
-            <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-purple-500/20">
-              <TrendingUp className="w-12 h-12 text-purple-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Community Driven</h3>
-              <p className="text-gray-400">
-                Built by developers, for developers
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Featured Skills */}
-      <div className="container mx-auto px-4 py-20">
-        <h2 className="text-4xl font-bold text-white text-center mb-4">
-          Featured Skills
-        </h2>
-        <p className="text-gray-400 text-center mb-12">
-          Most popular skills from our marketplace
-        </p>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Skill cards will go here - dynamically loaded */}
-          <Link href="/skills/meta-ad-research" className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-purple-500/20 hover:border-purple-500 transition-all group">
-            <div className="flex items-start justify-between mb-4">
-              <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">
-                Meta Ad Research
-              </h3>
-              <span className="bg-purple-600 text-white text-sm px-3 py-1 rounded-full">
-                $49
-              </span>
-            </div>
-            <p className="text-gray-400 mb-4">
-              Research competitor ads, analyze patterns, generate creative briefs
-            </p>
-            <div className="flex gap-2 flex-wrap">
-              <span className="bg-purple-900/50 text-purple-300 text-xs px-2 py-1 rounded">
-                Marketing
-              </span>
-              <span className="bg-purple-900/50 text-purple-300 text-xs px-2 py-1 rounded">
-                Research
-              </span>
-            </div>
-          </Link>
-
-          <Link href="/skills/clickup-melts" className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-purple-500/20 hover:border-purple-500 transition-all group">
-            <div className="flex items-start justify-between mb-4">
-              <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">
-                ClickUp Melts System
-              </h3>
-              <span className="bg-purple-600 text-white text-sm px-3 py-1 rounded-full">
-                $99
-              </span>
-            </div>
-            <p className="text-gray-400 mb-4">
-              Complete creative testing workflow for DTC brands
-            </p>
-            <div className="flex gap-2 flex-wrap">
-              <span className="bg-purple-900/50 text-purple-300 text-xs px-2 py-1 rounded">
-                Productivity
-              </span>
-              <span className="bg-purple-900/50 text-purple-300 text-xs px-2 py-1 rounded">
-                Workflow
-              </span>
-            </div>
-          </Link>
-
-          <Link href="/skills/x-research" className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-purple-500/20 hover:border-purple-500 transition-all group">
-            <div className="flex items-start justify-between mb-4">
-              <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">
-                X Research Agent
-              </h3>
-              <span className="bg-purple-600 text-white text-sm px-3 py-1 rounded-full">
-                $39
-              </span>
-            </div>
-            <p className="text-gray-400 mb-4">
-              Real-time Twitter research using Grok AI
-            </p>
-            <div className="flex gap-2 flex-wrap">
-              <span className="bg-purple-900/50 text-purple-300 text-xs px-2 py-1 rounded">
-                Research
-              </span>
-              <span className="bg-purple-900/50 text-purple-300 text-xs px-2 py-1 rounded">
-                Social
-              </span>
-            </div>
-          </Link>
-        </div>
-        
-        <div className="text-center mt-12">
-          <Link 
-            href="/skills" 
-            className="text-purple-400 hover:text-purple-300 font-semibold text-lg"
-          >
-            View all skills →
-          </Link>
-        </div>
-      </div>
-
-      {/* CTA Section */}
-      <div className="bg-gradient-to-r from-purple-900 to-indigo-900 py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to supercharge your agents?
-          </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Join thousands of developers building the future of AI agents
-          </p>
-          <Link 
-            href="/skills" 
-            className="bg-white hover:bg-gray-100 text-purple-900 font-bold py-4 px-8 rounded-lg text-lg transition-all inline-block transform hover:scale-105"
-          >
-            Get Started
-          </Link>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <footer className="bg-black/50 py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-white font-bold text-lg mb-4">OpenClaw Directory</h3>
-              <p className="text-gray-400">
-                Premium skills marketplace for AI agents
-              </p>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">Marketplace</h4>
-              <ul className="space-y-2">
-                <li><Link href="/skills" className="text-gray-400 hover:text-white">Browse Skills</Link></li>
-                <li><Link href="/categories" className="text-gray-400 hover:text-white">Categories</Link></li>
-                <li><Link href="/creators" className="text-gray-400 hover:text-white">Top Creators</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">Resources</h4>
-              <ul className="space-y-2">
-                <li><Link href="/docs" className="text-gray-400 hover:text-white">Documentation</Link></li>
-                <li><Link href="/guides" className="text-gray-400 hover:text-white">Guides</Link></li>
-                <li><Link href="/api" className="text-gray-400 hover:text-white">API</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">Company</h4>
-              <ul className="space-y-2">
-                <li><Link href="/about" className="text-gray-400 hover:text-white">About</Link></li>
-                <li><Link href="/contact" className="text-gray-400 hover:text-white">Contact</Link></li>
-                <li><Link href="/terms" className="text-gray-400 hover:text-white">Terms</Link></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2026 OpenClaw Directory. Built with ❤️ for the agent economy.</p>
+            <Link href="/contact" className="hover:text-white transition-colors">
+              Contact
+            </Link>
           </div>
         </div>
       </footer>
