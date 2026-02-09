@@ -1,416 +1,411 @@
-import Link from 'next/link';
+import Link from "next/link"
 
-interface Skill {
-  id: string;
-  name: string;
-  description: string;
-  category: string;
-  price: number;
-  creator: string;
-  installs?: number;
-  featured?: boolean;
-}
+import { SearchInput } from "@/components/SearchInput"
+import { SectionHeader } from "@/components/SectionHeader"
+import { SkillCard } from "@/components/SkillCard"
 
-const skills: Record<string, Skill[]> = {
-  featured: [
-    {
-      id: 'email-automation',
-      name: 'Email Automation Suite',
-      description: 'Smart email filtering, auto-responses, and follow-up sequences.',
-      category: 'Productivity',
-      price: 45,
-      creator: 'MailBot',
-      installs: 892,
-      featured: true
-    },
-    {
-      id: 'github-manager',
-      name: 'GitHub Repo Manager',
-      description: 'Manage repos, pull requests, and CI workflows with one command.',
-      category: 'Development',
-      price: 39,
-      creator: 'DevTools Co',
-      installs: 756,
-      featured: true
-    },
-    {
-      id: 'calendar-assistant',
-      name: 'Smart Calendar Assistant',
-      description: 'Schedule meetings, find optimal times, manage multiple calendars.',
-      category: 'Productivity',
-      price: 25,
-      creator: 'TimeWise',
-      installs: 523,
-      featured: true
-    },
-    {
-      id: 'api-tester',
-      name: 'API Testing & Documentation',
-      description: 'Test APIs, generate docs, monitor endpoints automatically.',
-      category: 'Development',
-      price: 49,
-      creator: 'APIKit',
-      installs: 445,
-      featured: true
-    }
-  ],
-  productivity: [
-    {
-      id: 'task-manager',
-      name: 'Task Manager Pro',
-      description: 'Full project management - tasks, docs, goals, time tracking.',
-      category: 'Productivity',
-      price: 29,
-      creator: 'ProductivityHub',
-      installs: 892
-    },
-    {
-      id: 'note-database',
-      name: 'Note Database Manager',
-      description: 'Create and manage notes, databases, pages, and blocks.',
-      category: 'Productivity',
-      price: 35,
-      creator: 'NotesPro',
-      installs: 671
-    },
-    {
-      id: 'calendar-assistant',
-      name: 'Smart Calendar Assistant',
-      description: 'Schedule meetings, find optimal times, manage multiple calendars.',
-      category: 'Productivity',
-      price: 25,
-      creator: 'TimeWise',
-      installs: 523
-    },
-    {
-      id: 'email-automation',
-      name: 'Email Automation Suite',
-      description: 'Smart email filtering, auto-responses, follow-up sequences.',
-      category: 'Productivity',
-      price: 45,
-      creator: 'MailBot',
-      installs: 389
-    }
-  ],
-  development: [
-    {
-      id: 'github-manager',
-      name: 'GitHub Repository Manager',
-      description: 'Manage repos, PRs, issues, and CI/CD workflows.',
-      category: 'Development',
-      price: 39,
-      creator: 'DevTools Co',
-      installs: 756
-    },
-    {
-      id: 'api-tester',
-      name: 'API Testing & Documentation',
-      description: 'Test APIs, generate docs, monitor endpoints.',
-      category: 'Development',
-      price: 49,
-      creator: 'APIKit',
-      installs: 445
-    },
-    {
-      id: 'code-reviewer',
-      name: 'AI Code Reviewer',
-      description: 'Automated code review, security scanning, best practices.',
-      category: 'Development',
-      price: 79,
-      creator: 'CodeGuard',
-      installs: 312
-    },
-    {
-      id: 'db-optimizer',
-      name: 'Database Query Optimizer',
-      description: 'Analyze and optimize SQL queries, suggest indexes.',
-      category: 'Development',
-      price: 69,
-      creator: 'DBMaster',
-      installs: 234
-    }
-  ],
-  research: [
-    {
-      id: 'web-scraper',
-      name: 'Web Scraper Pro',
-      description: 'Extract data from websites, APIs, and databases automatically.',
-      category: 'Research',
-      price: 59,
-      creator: 'DataScout',
-      installs: 445
-    },
-    {
-      id: 'market-intel',
-      name: 'Market Intelligence',
-      description: 'Track market trends, competitor analysis, industry insights.',
-      category: 'Research',
-      price: 69,
-      creator: 'MarketWatch',
-      installs: 312
-    },
-    {
-      id: 'patent-search',
-      name: 'Patent Search & Analysis',
-      description: 'Search patents, analyze claims, find prior art.',
-      category: 'Research',
-      price: 89,
-      creator: 'LegalTech AI',
-      installs: 178
-    },
-    {
-      id: 'data-analyzer',
-      name: 'Data Analysis Suite',
-      description: 'Automated data analysis, visualization, insights generation.',
-      category: 'Research',
-      price: 79,
-      creator: 'DataViz Labs',
-      installs: 234
-    }
-  ]
-};
-
-const featuredCreators = [
-  { name: 'DevTools Co', skills: 6, installs: 1567, avatar: '🛠️' },
-  { name: 'ProductivityHub', skills: 8, installs: 2341, avatar: '⚡' },
-  { name: 'APIKit', skills: 5, installs: 1243, avatar: '📊' },
-  { name: 'DataScout', skills: 4, installs: 892, avatar: '🔍' },
-  { name: 'MailBot', skills: 3, installs: 789, avatar: '📧' },
-  { name: 'TimeWise', skills: 4, installs: 1098, avatar: '📅' }
-];
-
-const trendingSkills = [
-  { 
-    title: 'New skill: AI Code Reviewer with security scanning',
-    creator: 'CodeGuard',
-    timestamp: '2 hours ago',
-    category: 'Development'
+const featuredSkills = [
+  {
+    id: "collab-briefs",
+    title: "Client Briefs Organizer",
+    description: "Collect, structure, and summarize client briefs with reusable templates.",
+    creator: "Signal Studio",
+    installs: 1204,
+    tags: ["Productivity", "Ops"],
   },
   {
-    title: 'Updated Web Scraper Pro with proxy rotation',
-    creator: 'DataScout',
-    timestamp: '5 hours ago',
-    category: 'Research'
+    id: "deploy-watch",
+    title: "Deploy Watchdog",
+    description: "Monitor deployments, summarize changes, and surface rollback risks.",
+    creator: "Opsline",
+    installs: 982,
+    tags: ["Development", "DevOps"],
   },
   {
-    title: 'Email Automation Suite hits 1000+ installs',
-    creator: 'MailBot',
-    timestamp: '1 day ago',
-    category: 'Productivity'
-  }
-];
+    id: "meeting-synth",
+    title: "Meeting Synth",
+    description: "Turn transcripts into crisp follow-ups, action items, and owners.",
+    creator: "Timewise",
+    installs: 811,
+    tags: ["Productivity", "Teams"],
+  },
+  {
+    id: "qa-harness",
+    title: "QA Harness",
+    description: "Generate test checklists, run scripts, and log defects automatically.",
+    creator: "Slate QA",
+    installs: 645,
+    tags: ["Development", "Testing"],
+  },
+]
 
-const SkillCard = ({ skill }: { skill: Skill }) => (
-  <Link 
-    href={`/skills/${skill.id}`}
-    className="block bg-[#1a1a1a] rounded-lg p-5 border border-gray-800 hover:border-gray-700 transition-colors"
-  >
-    <div className="mb-3">
-      <h3 className="text-white font-medium text-sm mb-2 line-clamp-1">
-        {skill.name}
-      </h3>
-      <p className="text-gray-500 text-xs mb-3 line-clamp-2">
-        {skill.description}
-      </p>
-    </div>
-    <div className="flex items-center justify-between text-xs">
-      <span className="text-white font-medium">${skill.price}</span>
-      {skill.installs && (
-        <span className="text-gray-600">{skill.installs} installs</span>
-      )}
-    </div>
-  </Link>
-);
+const productivitySkills = [
+  {
+    id: "workflow-pilot",
+    title: "Workflow Pilot",
+    description: "Automate recurring checklists, approvals, and weekly reporting.",
+    creator: "Productivity Hub",
+    installs: 902,
+    tags: ["Automation", "Planning"],
+  },
+  {
+    id: "inbox-copilot",
+    title: "Inbox Copilot",
+    description: "Sort, draft, and prioritize email with custom routing rules.",
+    creator: "Mail Studio",
+    installs: 731,
+    tags: ["Email", "Ops"],
+  },
+  {
+    id: "calendar-optimizer",
+    title: "Calendar Optimizer",
+    description: "Balance focus time and meetings with smart scheduling logic.",
+    creator: "Timewise",
+    installs: 518,
+    tags: ["Scheduling", "Teams"],
+  },
+  {
+    id: "notes-mesh",
+    title: "Notes Mesh",
+    description: "Link meeting notes, project docs, and tasks into one workspace.",
+    creator: "Signal Studio",
+    installs: 442,
+    tags: ["Docs", "Knowledge"],
+  },
+]
 
-const SectionHeader = ({ title, href }: { title: string; href: string }) => (
-  <div className="flex items-center justify-between mb-6">
-    <h2 className="text-white text-xl font-semibold">{title}</h2>
-    <Link href={href} className="text-gray-500 hover:text-gray-400 text-sm transition-colors">
-      View all →
-    </Link>
-  </div>
-);
+const developmentSkills = [
+  {
+    id: "repo-lens",
+    title: "Repo Lens",
+    description: "Audit repositories, summarize architecture, and map dependencies.",
+    creator: "Devline",
+    installs: 689,
+    tags: ["Code", "Audit"],
+  },
+  {
+    id: "api-companion",
+    title: "API Companion",
+    description: "Generate docs, examples, and change logs from OpenAPI specs.",
+    creator: "APIKit",
+    installs: 544,
+    tags: ["API", "Docs"],
+  },
+  {
+    id: "security-scan",
+    title: "Security Scan",
+    description: "Run static scans, flag issues, and draft remediation notes.",
+    creator: "CodeGuard",
+    installs: 496,
+    tags: ["Security", "Testing"],
+  },
+  {
+    id: "build-sherpa",
+    title: "Build Sherpa",
+    description: "Diagnose failed builds, group errors, and propose fixes.",
+    creator: "Opsline",
+    installs: 372,
+    tags: ["CI", "Diagnostics"],
+  },
+]
+
+const researchSkills = [
+  {
+    id: "market-drift",
+    title: "Market Drift",
+    description: "Track competitors, summarize market shifts, and highlight signals.",
+    creator: "Atlas Research",
+    installs: 514,
+    tags: ["Research", "Strategy"],
+  },
+  {
+    id: "doc-miner",
+    title: "Doc Miner",
+    description: "Extract key insights from PDFs, reports, and internal docs.",
+    creator: "DataScout",
+    installs: 401,
+    tags: ["Analysis", "Docs"],
+  },
+  {
+    id: "survey-lab",
+    title: "Survey Lab",
+    description: "Design surveys, compile results, and generate summaries.",
+    creator: "Signal Studio",
+    installs: 286,
+    tags: ["UX", "Insights"],
+  },
+  {
+    id: "trendline",
+    title: "Trendline",
+    description: "Aggregate sources and surface trends with weekly briefings.",
+    creator: "Atlas Research",
+    installs: 329,
+    tags: ["Research", "Intel"],
+  },
+]
+
+const creators = [
+  { name: "Signal Studio", skills: 6 },
+  { name: "Opsline", skills: 5 },
+  { name: "APIKit", skills: 4 },
+  { name: "DataScout", skills: 3 },
+  { name: "Timewise", skills: 4 },
+  { name: "CodeGuard", skills: 3 },
+]
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black">
-      {/* Header */}
-      <header className="border-b border-gray-900 sticky top-0 bg-black/95 backdrop-blur-sm z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="text-white font-semibold text-lg">OpenClaw</span>
+    <div className="min-h-screen bg-black text-white">
+      <header className="sticky top-0 z-50 border-b border-[#1a1a1a] bg-black/90 backdrop-blur-sm">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+          <Link href="/" className="text-sm font-semibold text-white">
+            OpenClaw Directory
+          </Link>
+          <nav className="hidden items-center gap-6 text-sm text-[#a1a1a1] md:flex">
+            <Link href="/skills" className="hover:text-white transition-colors">
+              Skills
             </Link>
-            <nav className="flex items-center gap-6">
-              <Link href="/skills" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Skills
-              </Link>
-              <Link href="/creators" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Creators
-              </Link>
-              <Link href="/docs" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Docs
-              </Link>
-              <Link 
-                href="/login" 
-                className="bg-white text-black px-3 py-1.5 rounded text-sm hover:bg-gray-100 transition-colors font-medium"
-              >
-                Sign in
-              </Link>
-            </nav>
-          </div>
+            <Link href="/creators" className="hover:text-white transition-colors">
+              Creators
+            </Link>
+            <Link href="/docs" className="hover:text-white transition-colors">
+              Docs
+            </Link>
+            <Link
+              href="/login"
+              className="rounded-md bg-white px-3 py-1.5 text-xs font-medium text-black hover:bg-gray-100 transition-colors"
+            >
+              Sign in
+            </Link>
+          </nav>
         </div>
       </header>
 
-      {/* Hero */}
-      <div className="border-b border-gray-900">
-        <div className="max-w-7xl mx-auto px-6 py-16 text-center">
-          <div className="mb-2 text-sm text-gray-500 tracking-wider uppercase">
-            OPENCLAW DIRECTORY
+      <section className="border-b border-[#1a1a1a]">
+        <div className="mx-auto max-w-7xl px-6 py-16 text-center">
+          <div className="text-xs uppercase tracking-[0.2em] text-[#a1a1a1]">
+            OpenClaw Directory
           </div>
-          <h1 className="text-4xl font-semibold text-white mb-4">
-            Production-ready skills for OpenClaw agents.
+          <h1 className="mt-4 text-4xl font-semibold text-white">
+            The home for OpenClaw skills
           </h1>
-          <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
-            Browse curated capabilities, discover new creators, and install the right skills for your agents in minutes.
+          <p className="mx-auto mt-4 max-w-2xl text-sm text-[#a1a1a1]">
+            Discover vetted, production-ready skills from top creators. Install the
+            right capability in minutes.
           </p>
-          <div className="max-w-xl mx-auto">
-            <input
-              type="text"
-              placeholder="Search skills, creators, categories..."
-              className="w-full bg-black border border-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-gray-700 text-sm"
-            />
+          <div className="mt-8">
+            <SearchInput />
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Stats */}
-      <div className="border-b border-gray-900">
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="grid grid-cols-3 gap-8 text-center">
+      <section className="border-b border-[#1a1a1a]">
+        <div className="mx-auto max-w-7xl px-6 py-12">
+          <div className="grid grid-cols-1 gap-8 text-center md:grid-cols-3">
             <div>
-              <div className="text-3xl font-semibold text-white mb-1">120+</div>
-              <div className="text-sm text-gray-500">Skills available</div>
+              <div className="text-3xl font-semibold text-white">120+</div>
+              <div className="mt-2 text-sm text-[#a1a1a1]">Skills available</div>
             </div>
             <div>
-              <div className="text-3xl font-semibold text-white mb-1">48</div>
-              <div className="text-sm text-gray-500">Verified creators</div>
+              <div className="text-3xl font-semibold text-white">48</div>
+              <div className="mt-2 text-sm text-[#a1a1a1]">Verified creators</div>
             </div>
             <div>
-              <div className="text-3xl font-semibold text-white mb-1">9.2k</div>
-              <div className="text-sm text-gray-500">Total installs</div>
+              <div className="text-3xl font-semibold text-white">9.2k</div>
+              <div className="mt-2 text-sm text-[#a1a1a1]">Total installs</div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        {/* Featured Skills */}
+      <div className="mx-auto max-w-7xl px-6 py-12">
         <section className="mb-16">
           <SectionHeader title="Featured Skills" href="/skills/featured" />
-          <div className="grid grid-cols-4 gap-4">
-            {skills.featured.map(skill => (
-              <SkillCard key={skill.id} skill={skill} />
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {featuredSkills.map((skill) => (
+              <SkillCard
+                key={skill.id}
+                href={`/skills/${skill.id}`}
+                title={skill.title}
+                description={skill.description}
+                creator={skill.creator}
+                installs={skill.installs}
+                tags={skill.tags}
+              />
             ))}
           </div>
         </section>
 
-        {/* Productivity */}
         <section className="mb-16">
           <SectionHeader title="Productivity" href="/categories/productivity" />
-          <div className="grid grid-cols-4 gap-4">
-            {skills.productivity.map(skill => (
-              <SkillCard key={skill.id} skill={skill} />
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {productivitySkills.map((skill) => (
+              <SkillCard
+                key={skill.id}
+                href={`/skills/${skill.id}`}
+                title={skill.title}
+                description={skill.description}
+                creator={skill.creator}
+                installs={skill.installs}
+                tags={skill.tags}
+              />
             ))}
           </div>
         </section>
 
-        {/* Development */}
         <section className="mb-16">
           <SectionHeader title="Development" href="/categories/development" />
-          <div className="grid grid-cols-4 gap-4">
-            {skills.development.map(skill => (
-              <SkillCard key={skill.id} skill={skill} />
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {developmentSkills.map((skill) => (
+              <SkillCard
+                key={skill.id}
+                href={`/skills/${skill.id}`}
+                title={skill.title}
+                description={skill.description}
+                creator={skill.creator}
+                installs={skill.installs}
+                tags={skill.tags}
+              />
             ))}
           </div>
         </section>
 
-        {/* Featured Creators */}
-        <section className="mb-16">
-          <SectionHeader title="Creators" href="/creators" />
-          <div className="grid grid-cols-6 gap-4">
-            {featuredCreators.map(creator => (
-              <Link
-                key={creator.name}
-                href={`/creators/${creator.name.toLowerCase()}`}
-                className="bg-[#1a1a1a] rounded-lg p-4 border border-gray-800 hover:border-gray-700 transition-colors text-center"
-              >
-                <div className="text-3xl mb-2">{creator.avatar}</div>
-                <div className="text-white font-medium text-xs mb-1">{creator.name}</div>
-                <div className="text-gray-600 text-xs">{creator.skills} skills</div>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* Research */}
         <section className="mb-16">
           <SectionHeader title="Research" href="/categories/research" />
-          <div className="grid grid-cols-4 gap-4">
-            {skills.research.map(skill => (
-              <SkillCard key={skill.id} skill={skill} />
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {researchSkills.map((skill) => (
+              <SkillCard
+                key={skill.id}
+                href={`/skills/${skill.id}`}
+                title={skill.title}
+                description={skill.description}
+                creator={skill.creator}
+                installs={skill.installs}
+                tags={skill.tags}
+              />
             ))}
+          </div>
+        </section>
+
+        <section className="mb-16">
+          <SectionHeader title="Creators" href="/creators" />
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6">
+            {creators.map((creator) => {
+              const initials = creator.name
+                .split(" ")
+                .map((part) => part[0])
+                .join("")
+                .slice(0, 2)
+                .toUpperCase()
+
+              return (
+                <Link
+                  key={creator.name}
+                  href={`/creators/${creator.name.toLowerCase().replace(/\s+/g, "-")}`}
+                  className="rounded-lg border border-[#1a1a1a] bg-[#0a0a0a] p-4 text-center transition-colors hover:border-[#2a2a2a]"
+                >
+                  <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full border border-[#1a1a1a] text-xs text-[#a1a1a1]">
+                    {initials}
+                  </div>
+                  <div className="mt-3 text-xs font-medium text-white">
+                    {creator.name}
+                  </div>
+                  <div className="mt-1 text-xs text-[#a1a1a1]">
+                    {creator.skills} skills
+                  </div>
+                </Link>
+              )
+            })}
           </div>
         </section>
       </div>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-900">
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="grid grid-cols-4 gap-8 mb-8">
+      <footer className="border-t border-[#1a1a1a]">
+        <div className="mx-auto max-w-7xl px-6 py-12">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
             <div>
-              <div className="text-white font-semibold mb-4 text-sm">OpenClaw Directory</div>
-              <p className="text-gray-600 text-xs">
-                The marketplace for AI agent capabilities
+              <div className="text-sm font-semibold text-white">OpenClaw Directory</div>
+              <p className="mt-3 text-xs text-[#a1a1a1]">
+                A curated marketplace for OpenClaw agent skills.
               </p>
             </div>
             <div>
-              <div className="text-white font-medium mb-4 text-sm">Product</div>
-              <ul className="space-y-2 text-xs">
-                <li><Link href="/skills" className="text-gray-500 hover:text-gray-400">Browse Skills</Link></li>
-                <li><Link href="/creators" className="text-gray-500 hover:text-gray-400">Creators</Link></li>
-                <li><Link href="/pricing" className="text-gray-500 hover:text-gray-400">Pricing</Link></li>
+              <div className="text-sm font-medium text-white">Product</div>
+              <ul className="mt-3 space-y-2 text-xs text-[#a1a1a1]">
+                <li>
+                  <Link href="/skills" className="hover:text-white">
+                    Browse Skills
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/creators" className="hover:text-white">
+                    Creators
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/pricing" className="hover:text-white">
+                    Pricing
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>
-              <div className="text-white font-medium mb-4 text-sm">Resources</div>
-              <ul className="space-y-2 text-xs">
-                <li><Link href="/docs" className="text-gray-500 hover:text-gray-400">Documentation</Link></li>
-                <li><Link href="/guides" className="text-gray-500 hover:text-gray-400">Guides</Link></li>
-                <li><Link href="/api" className="text-gray-500 hover:text-gray-400">API</Link></li>
+              <div className="text-sm font-medium text-white">Resources</div>
+              <ul className="mt-3 space-y-2 text-xs text-[#a1a1a1]">
+                <li>
+                  <Link href="/docs" className="hover:text-white">
+                    Documentation
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/guides" className="hover:text-white">
+                    Guides
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/api" className="hover:text-white">
+                    API
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>
-              <div className="text-white font-medium mb-4 text-sm">Company</div>
-              <ul className="space-y-2 text-xs">
-                <li><Link href="/about" className="text-gray-500 hover:text-gray-400">About</Link></li>
-                <li><Link href="/contact" className="text-gray-500 hover:text-gray-400">Contact</Link></li>
-                <li><Link href="/terms" className="text-gray-500 hover:text-gray-400">Terms</Link></li>
+              <div className="text-sm font-medium text-white">Company</div>
+              <ul className="mt-3 space-y-2 text-xs text-[#a1a1a1]">
+                <li>
+                  <Link href="/about" className="hover:text-white">
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="hover:text-white">
+                    Contact
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/terms" className="hover:text-white">
+                    Terms
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-900 pt-8 flex items-center justify-between text-xs">
-            <div className="text-gray-600">
-              © 2026 OpenClaw Directory
-            </div>
+          <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-[#1a1a1a] pt-6 text-xs text-[#a1a1a1] md:flex-row">
+            <div>© 2026 OpenClaw Directory</div>
             <div className="flex gap-4">
-              <Link href="/privacy" className="text-gray-600 hover:text-gray-500">Privacy</Link>
-              <Link href="/terms" className="text-gray-600 hover:text-gray-500">Terms</Link>
-              <Link href="/contact" className="text-gray-600 hover:text-gray-500">Contact</Link>
+              <Link href="/privacy" className="hover:text-white">
+                Privacy
+              </Link>
+              <Link href="/terms" className="hover:text-white">
+                Terms
+              </Link>
+              <Link href="/contact" className="hover:text-white">
+                Contact
+              </Link>
             </div>
           </div>
         </div>
       </footer>
     </div>
-  );
+  )
 }
