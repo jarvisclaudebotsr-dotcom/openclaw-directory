@@ -28,8 +28,8 @@ export function SkillCard({
     .toUpperCase()
 
   return (
-    <Link href={href} className="block">
-      <Card className="rounded-lg border border-[#1a1a1a] bg-[#0a0a0a] p-5 shadow-none transition-colors hover:border-[#2a2a2a]">
+    <Link href={href} className="block h-full w-full">
+      <Card className="h-full w-full rounded-lg border border-[#1a1a1a] bg-[#0a0a0a] p-5 shadow-none transition-colors hover:border-[#2a2a2a]">
         <div className="flex items-center justify-between">
           <div className="flex h-7 w-7 items-center justify-center rounded-md border border-[#1a1a1a] text-[10px] text-[#a1a1a1]">
             {title[0]}

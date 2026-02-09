@@ -221,7 +221,7 @@ export default function Home() {
       <div className="mx-auto max-w-7xl px-6 py-12">
         <section className="mb-16">
           <SectionHeader title="Featured Skills" href="/skills/featured" />
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
             {featuredSkills.map((skill) => (
               <SkillCard
                 key={skill.id}
@@ -238,7 +238,7 @@ export default function Home() {
 
         <section className="mb-16">
           <SectionHeader title="Productivity" href="/categories/productivity" />
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
             {productivitySkills.map((skill) => (
               <SkillCard
                 key={skill.id}
@@ -255,7 +255,7 @@ export default function Home() {
 
         <section className="mb-16">
           <SectionHeader title="Development" href="/categories/development" />
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
             {developmentSkills.map((skill) => (
               <SkillCard
                 key={skill.id}
@@ -272,7 +272,7 @@ export default function Home() {
 
         <section className="mb-16">
           <SectionHeader title="Research" href="/categories/research" />
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
             {researchSkills.map((skill) => (
               <SkillCard
                 key={skill.id}
