@@ -1,0 +1,140 @@
+[
+  {
+    "name": "Soul Personality",
+    "slug": "soul-personality",
+    "description": "Core personality and values system. Defines agent behavior with explicit instructions: \"be genuinely helpful, have opinions, be resourceful.\" No fine-tuning needed—just well-crafted prompts.",
+    "category": "Core",
+    "price": 0,
+    "version": "2.4.1",
+    "downloads": 18700,
+    "featured": true,
+    "tags": ["personality", "core", "behavior"],
+    "sourceUrl": "https://github.com/seedprod/openclaw-prompts-and-skills/blob/main/SOUL.md"
+  },
+  {
+    "name": "Memory System",
+    "slug": "memory-system",
+    "description": "File-based memory architecture. Reads memory/YYYY-MM-DD.md for recent context and MEMORY.md for long-term memories. No vector database—just markdown files that update as the agent learns.",
+    "category": "Core",
+    "price": 0,
+    "version": "1.8.3",
+    "downloads": 15200,
+    "featured": true,
+    "tags": ["memory", "storage", "context"],
+    "sourceUrl": "https://github.com/seedprod/openclaw-prompts-and-skills/blob/main/CLAUDE.md"
+  },
+  {
+    "name": "Bootstrap Ritual",
+    "slug": "bootstrap-ritual",
+    "description": "First-run experience that creates the \"coming alive\" moment. Guides agents through identity discovery with \"Who am I? Who are you?\" prompts. Theatrical but effective for memorable first impressions.",
+    "category": "Core",
+    "price": 0,
+    "version": "1.5.0",
+    "downloads": 12900,
+    "featured": true,
+    "tags": ["onboarding", "setup", "initialization"],
+    "sourceUrl": "https://github.com/seedprod/openclaw-prompts-and-skills/blob/main/BOOTSTRAP.md"
+  },
+  {
+    "name": "Identity Builder",
+    "slug": "identity-builder",
+    "description": "Dynamic identity system where agents define their own name, creature type, vibe, and emoji during first conversation. Creates unique personalities through structured markdown templates.",
+    "category": "Core",
+    "price": 0,
+    "version": "1.3.2",
+    "downloads": 10400,
+    "featured": true,
+    "tags": ["identity", "personality", "customization"],
+    "sourceUrl": "https://github.com/seedprod/openclaw-prompts-and-skills/blob/main/IDENTITY.md"
+  },
+  {
+    "name": "Telegram Adapter",
+    "slug": "telegram-adapter",
+    "description": "Minimal Telegram bot adapter connecting messaging platforms to Claude Code. Demonstrates core OpenClaw messaging patterns: receive message, call Claude, send response. ~100 lines of Python.",
+    "category": "Integration",
+    "price": 0,
+    "version": "0.9.1",
+    "downloads": 8600,
+    "featured": true,
+    "tags": ["telegram", "messaging", "integration"],
+    "sourceUrl": "https://github.com/seedprod/openclaw-prompts-and-skills/blob/main/telegram-claude-poc.py"
+  },
+  {
+    "name": "System Prompt Engine",
+    "slug": "system-prompt-engine",
+    "description": "Deep dive into system prompt construction. Covers base identity injection, tool definitions, skill discovery, memory recall, and heartbeat systems. Essential for understanding OpenClaw behavior.",
+    "category": "Core",
+    "price": 0,
+    "version": "3.1.0",
+    "downloads": 14300,
+    "featured": true,
+    "tags": ["prompts", "system", "core"],
+    "sourceUrl": "https://github.com/seedprod/openclaw-prompts-and-skills/blob/main/OPENCLAW_SYSTEM_PROMPT_STUDY.md"
+  },
+  {
+    "name": "Tools Config",
+    "slug": "tools-config",
+    "description": "Environment-specific tool configuration system. Manages camera names, SSH hosts, speaker names, and other context-aware device mappings for seamless integration.",
+    "category": "Utilities",
+    "price": 0,
+    "version": "1.2.1",
+    "downloads": 0,
+    "tags": ["config", "tools", "environment"],
+    "sourceUrl": "https://github.com/seedprod/openclaw-prompts-and-skills/blob/main/TOOLS.md"
+  },
+  {
+    "name": "User Context",
+    "slug": "user-context",
+    "description": "User information management system. Stores name, timezone, preferences, and contextual details to personalize agent interactions and maintain conversation continuity.",
+    "category": "Core",
+    "price": 0,
+    "version": "1.1.0",
+    "downloads": 0,
+    "tags": ["user", "context", "personalization"],
+    "sourceUrl": "https://github.com/seedprod/openclaw-prompts-and-skills/blob/main/USER.md"
+  },
+  {
+    "name": "Workspace Behavior",
+    "slug": "workspace-behavior",
+    "description": "Workspace behavior rules and safety guidelines. Defines when to speak in group chats, memory system protocols, and interaction boundaries for Claude Code integration.",
+    "category": "Core",
+    "price": 0,
+    "version": "2.0.3",
+    "downloads": 0,
+    "tags": ["workspace", "behavior", "guidelines"],
+    "sourceUrl": "https://github.com/seedprod/openclaw-prompts-and-skills/blob/main/CLAUDE.md"
+  },
+  {
+    "name": "Group Chat Handler",
+    "slug": "group-chat-handler",
+    "description": "Intelligent group chat behavior system. Implements HEARTBEAT_OK protocol, reaction vs reply logic, and conversation dominance prevention through explicit prompt rules.",
+    "category": "Communication",
+    "price": 0,
+    "version": "1.4.2",
+    "downloads": 0,
+    "tags": ["group-chat", "messaging", "behavior"],
+    "sourceUrl": "https://github.com/seedprod/openclaw-prompts-and-skills"
+  },
+  {
+    "name": "Heartbeat System",
+    "slug": "heartbeat-system",
+    "description": "Proactive check-in and heartbeat mechanism. Enables agents to initiate conversations, check on users, and maintain engagement without being intrusive or dominating chats.",
+    "category": "Core",
+    "price": 0,
+    "version": "1.0.5",
+    "downloads": 0,
+    "tags": ["heartbeat", "proactive", "engagement"],
+    "sourceUrl": "https://github.com/seedprod/openclaw-prompts-and-skills/blob/main/OPENCLAW_SYSTEM_PROMPT_STUDY.md"
+  },
+  {
+    "name": "Markdown Formatter",
+    "slug": "markdown-formatter",
+    "description": "Platform-specific markdown formatting adapter. Converts markdown to platform-native formats for Telegram, WhatsApp, Discord, Signal, and other messaging channels.",
+    "category": "Utilities",
+    "price": 0,
+    "version": "0.8.2",
+    "downloads": 0,
+    "tags": ["markdown", "formatting", "cross-platform"],
+    "sourceUrl": "https://github.com/seedprod/openclaw-prompts-and-skills/blob/main/telegram-claude-poc.py"
+  }
+]

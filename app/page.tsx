@@ -157,7 +157,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white">
       <header className="sticky top-0 z-50 border-b border-[#1a1a1a] bg-black/90 backdrop-blur-sm">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+        <div className="flex h-16 w-full items-center justify-between px-6">
           <Link href="/" className="text-sm font-semibold text-white">
             OpenClaw Directory
           </Link>
@@ -182,7 +182,7 @@ export default function Home() {
       </header>
 
       <section className="border-b border-[#1a1a1a]">
-        <div className="mx-auto max-w-7xl px-6 py-16 text-center">
+        <div className="w-full px-6 py-16 text-center">
           <div className="text-xs uppercase tracking-[0.2em] text-[#a1a1a1]">
             OpenClaw Directory
           </div>
@@ -200,7 +200,7 @@ export default function Home() {
       </section>
 
       <section className="border-b border-[#1a1a1a]">
-        <div className="mx-auto max-w-7xl px-6 py-12">
+        <div className="w-full px-6 py-12">
           <div className="grid grid-cols-1 gap-8 text-center md:grid-cols-3">
             <div>
               <div className="text-3xl font-semibold text-white">120+</div>
@@ -218,7 +218,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-7xl px-6 py-12">
+      <div className="w-full px-6 py-12">
         <section className="mb-16">
           <SectionHeader title="Featured Skills" href="/skills/featured" />
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -321,7 +321,7 @@ export default function Home() {
       </div>
 
       <footer className="border-t border-[#1a1a1a]">
-        <div className="mx-auto max-w-7xl px-6 py-12">
+        <div className="w-full px-6 py-12">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
             <div>
               <div className="text-sm font-semibold text-white">OpenClaw Directory</div>
