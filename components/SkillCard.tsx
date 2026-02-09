@@ -29,7 +29,7 @@ export function SkillCard({
 
   return (
     <Link href={href} className="block h-full w-full">
-      <Card className="h-full w-full rounded-lg border border-[#1a1a1a] bg-[#0a0a0a] p-5 shadow-none transition-colors hover:border-[#2a2a2a]">
+      <Card className="h-full w-full rounded-lg border border-[#1a1a1a] bg-[#0a0a0a] p-4 shadow-none transition-colors hover:border-[#2a2a2a]">
         <div className="flex items-center justify-between">
           <div className="flex h-7 w-7 items-center justify-center rounded-md border border-[#1a1a1a] text-[10px] text-[#a1a1a1]">
             {title[0]}
@@ -38,7 +38,7 @@ export function SkillCard({
             {creatorInitials}
           </div>
         </div>
-        <div className="mt-4">
+        <div className="mt-3">
           <h3 className="text-sm font-medium text-white line-clamp-1">
             {title}
           </h3>
@@ -46,7 +46,7 @@ export function SkillCard({
             {description}
           </p>
         </div>
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className="mt-3 flex flex-wrap gap-2">
           {tags.map((tag) => (
             <Badge
               key={tag}
@@ -57,7 +57,7 @@ export function SkillCard({
             </Badge>
           ))}
         </div>
-        <div className="mt-4 text-xs text-[#a1a1a1]">
+        <div className="mt-3 text-xs text-[#a1a1a1]">
           {installs ? `${installs} installs` : "New"}
         </div>
       </Card>

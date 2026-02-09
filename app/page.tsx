@@ -186,7 +186,7 @@ export default function Home() {
           <div className="text-xs uppercase tracking-[0.2em] text-[#a1a1a1]">
             OpenClaw Directory
           </div>
-          <h1 className="mt-4 text-4xl font-semibold text-white">
+          <h1 className="mt-4 text-5xl font-bold text-white">
             The home for OpenClaw skills
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-sm text-[#a1a1a1]">
