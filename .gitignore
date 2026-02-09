@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Internal/confidential files
+DESIGN_BRIEF.md
+PAYMENT_CONFIG.md
+*.jpg
+cursor-directory-reference.*
