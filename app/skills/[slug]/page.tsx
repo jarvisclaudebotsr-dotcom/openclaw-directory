@@ -3,6 +3,8 @@ import { notFound } from "next/navigation"
 import { ArrowLeft, ExternalLink, Download, Star, Clock, Tag, Github, Share2, BookOpen, Code } from "lucide-react"
 import { InstallCommand } from "@/components/InstallCommand"
 import { SkillCard } from "@/components/SkillCard"
+import { SkillFeatures } from "@/components/SkillFeatures"
+import { SkillRequirements } from "@/components/SkillRequirements"
 import { getSkill, getSkills } from "@/lib/skills"
 import { ActionsSidebar } from "./ActionsSidebar"
 import { SkillStructuredData } from "@/components/SkillStructuredData"
@@ -213,7 +215,7 @@ export default async function SkillPage({ params }: { params: Promise<{ slug: st
             </div>
           </div>
 
-          {/* Documentation Section - Placeholder */}
+          {/* Documentation Section */}
           <div className="rounded-xl border border-[#1a1a1a] bg-[#0a0a0a] p-6">
             <div className="mb-4 flex items-center gap-2">
               <BookOpen className="h-5 w-5 text-[#666]" />
@@ -223,16 +225,21 @@ export default async function SkillPage({ params }: { params: Promise<{ slug: st
               <p className="text-[#888]">
                 This skill provides {skill.description.toLowerCase()}
               </p>
-              <h3 className="mt-4 text-base font-medium text-white">Usage</h3>
-              <p className="text-[#888]">
+              
+              <h3 className="mt-6 text-base font-medium text-white">Features</h3>
+              <div className="mt-3">
+                <SkillFeatures />
+              </div>
+
+              <h3 className="mt-6 text-base font-medium text-white">Usage</h3>
+              <p className="mt-3 text-[#888]">
                 After installation, the skill will be automatically available in your agent's context. 
                 Configure any required settings in your <code className="rounded bg-[#1a1a1a] px-1.5 py-0.5 font-mono text-xs text-[#a1a1a1]">TOOLS.md</code> file.
               </p>
-              <h3 className="mt-4 text-base font-medium text-white">Requirements</h3>
-              <ul className="mt-2 space-y-1 text-[#888]">
-                <li>• Clawdbot v1.0+ or Claude Code with OpenClaw support</li>
-                <li>• Node.js 18+ (for CLI installation)</li>
-              </ul>
+
+              <div className="mt-6">
+                <SkillRequirements />
+              </div>
             </div>
           </div>
 
