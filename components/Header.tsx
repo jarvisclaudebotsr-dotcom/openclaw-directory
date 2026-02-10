@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Github, User, LogOut, Plus, Shield } from 'lucide-react'
 import { createClient } from '@/lib/supabase/server'
+import { MobileMenu } from '@/components/MobileMenu'
 
 export async function Header() {
   const supabase = await createClient()
@@ -47,6 +48,7 @@ export async function Header() {
 
         {/* Actions */}
         <div className="flex items-center gap-3">
+          <MobileMenu />
           {user ? (
             <>
               <Link href="/submit" className="btn-secondary hidden text-sm sm:flex">

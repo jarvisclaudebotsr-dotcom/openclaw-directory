@@ -56,7 +56,10 @@ export function SkillCard({
   // Compact card for grids
   if (compact) {
     return (
-      <Link href={`/skills/${id}`} className="card group block p-4">
+      <Link 
+        href={`/skills/${id}`} 
+        className="card group block p-4 transition-all duration-200 hover:border-[#2a2a2a] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.03)]"
+      >
         <div className="flex items-start gap-3">
           <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-[#171717] text-lg">
             {emoji}
@@ -83,15 +86,31 @@ export function SkillCard({
     )
   }
 
+  // Check if skill is new (added in last 7 days)
+  const isNew = (() => {
+    const date = new Date(updatedAt)
+    const now = new Date()
+    const diffTime = Math.abs(now.getTime() - date.getTime())
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+    return diffDays <= 7
+  })()
+
   // Full card
   return (
-    <Link href={`/skills/${id}`} className="card group relative flex flex-col p-5">
-      {/* Featured badge */}
-      {featured && (
+    <Link 
+      href={`/skills/${id}`} 
+      className="card group relative flex flex-col p-5 transition-all duration-200 hover:border-[#2a2a2a] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.03)]"
+    >
+      {/* Featured or New badge */}
+      {featured ? (
         <div className="badge badge-featured absolute right-4 top-4">
           Featured
         </div>
-      )}
+      ) : isNew ? (
+        <div className="absolute right-4 top-4 rounded bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-400">
+          New
+        </div>
+      ) : null}
 
       {/* Header */}
       <div className="mb-4 flex items-start gap-3">
@@ -99,7 +118,7 @@ export function SkillCard({
           {emoji}
         </div>
         <div className="min-w-0 flex-1">
-          <h3 className="truncate text-base font-semibold text-white">{name}</h3>
+          <h3 className="truncate text-base font-semibold text-white group-hover:text-gray-100 transition-colors">{name}</h3>
           <div className="mt-0.5 flex items-center gap-2 text-xs text-[#525252]">
             <span className="text-[#737373]">{category}</span>
             <span>•</span>

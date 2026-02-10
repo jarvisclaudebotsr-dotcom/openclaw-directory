@@ -5,6 +5,71 @@ import { InstallCommand } from "@/components/InstallCommand"
 import { SkillCard } from "@/components/SkillCard"
 import { getSkill, getSkills } from "@/lib/skills"
 import { ActionsSidebar } from "./ActionsSidebar"
+import { SkillStructuredData } from "@/components/SkillStructuredData"
+import { Metadata } from "next"
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const skill = getSkill(slug)
+
+  if (!skill) {
+    return {
+      title: 'Skill Not Found',
+      description: 'The requested skill could not be found.',
+    }
+  }
+
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://openclawdirectory.ai'
+  const skillUrl = `${baseUrl}/skills/${skill.id}`
+  
+  return {
+    title: `${skill.name} - OpenClaw Skill | ${skill.category}`,
+    description: `${skill.description} Install this ${skill.category.toLowerCase()} skill for Clawdbot, Claude Code, and OpenClaw-compatible AI agents. ${skill.installs ? `${(skill.installs / 1000).toFixed(0)}k+ installs.` : ''}`,
+    keywords: [
+      skill.name,
+      ...skill.tags,
+      'OpenClaw',
+      'Clawdbot',
+      'Claude Code',
+      'AI agent',
+      'agent skill',
+      skill.category,
+      'automation',
+      'AI tools',
+    ],
+    authors: [{ name: 'OpenClaw Community' }],
+    openGraph: {
+      type: 'article',
+      locale: 'en_US',
+      url: skillUrl,
+      title: `${skill.name} - OpenClaw Skill`,
+      description: skill.description,
+      siteName: 'OpenClaw Directory',
+      publishedTime: skill.updatedAt,
+      modifiedTime: skill.updatedAt,
+      tags: skill.tags,
+    },
+    twitter: {
+      card: 'summary',
+      title: `${skill.name} ${skill.emoji}`,
+      description: skill.description,
+    },
+    alternates: {
+      canonical: skillUrl,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+  }
+}
 
 export async function generateStaticParams() {
   const skills = getSkills()
@@ -64,7 +129,9 @@ export default async function SkillPage({ params }: { params: Promise<{ slug: st
   }
 
   return (
-    <div className="mx-auto max-w-5xl">
+    <>
+      <SkillStructuredData skill={skill} />
+      <div className="mx-auto max-w-5xl">
       {/* Breadcrumb */}
       <nav className="mb-6 flex items-center gap-2 text-sm text-[#555]">
         <Link href="/" className="hover:text-white">Home</Link>
@@ -242,5 +309,6 @@ export default async function SkillPage({ params }: { params: Promise<{ slug: st
         </div>
       </div>
     </div>
+    </>
   )
 }
