@@ -1,6 +1,9 @@
 import { Suspense } from "react"
 import { SkillsPageClient } from "./SkillsPageClient"
-import { getSkills, getCategories } from "@/lib/skills"
+import { getSkillsFromDB, getCategoriesFromDB } from "@/lib/skills-db"
+
+export const dynamic = 'force-dynamic'
+export const revalidate = 60
 
 function SkillsLoading() {
   return (
@@ -15,9 +18,17 @@ function SkillsLoading() {
   )
 }
 
-export default function SkillsPage() {
-  const skills = getSkills()
-  const categories = getCategories()
+export default async function SkillsPage() {
+  const skills = await getSkillsFromDB()
+  const categoriesDB = await getCategoriesFromDB()
+  
+  // Convert to expected format
+  const categories = categoriesDB.map(c => ({
+    id: c.id,
+    name: c.name,
+    description: `${c.count} skills`,
+    icon: '📦'
+  }))
 
   return (
     <Suspense fallback={<SkillsLoading />}>

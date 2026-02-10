@@ -3,16 +3,18 @@ import { notFound } from "next/navigation"
 import { ArrowLeft, ExternalLink, Download, Star, Clock, Tag, Github, Share2, BookOpen, Code } from "lucide-react"
 import { InstallCommand } from "@/components/InstallCommand"
 import { SkillCard } from "@/components/SkillCard"
-import { SkillFeatures } from "@/components/SkillFeatures"
-import { SkillRequirements } from "@/components/SkillRequirements"
-import { getSkill, getSkills } from "@/lib/skills"
+import { SkillContent } from "@/components/SkillContent"
+import { getSkillFromDB, getSkillsFromDB, getSkillsByCategoryFromDB } from "@/lib/skills-db"
 import { ActionsSidebar } from "./ActionsSidebar"
 import { SkillStructuredData } from "@/components/SkillStructuredData"
 import { Metadata } from "next"
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 60 // Revalidate every 60 seconds
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
-  const skill = getSkill(slug)
+  const skill = await getSkillFromDB(slug)
 
   if (!skill) {
     return {
@@ -47,9 +49,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: `${skill.name} - OpenClaw Skill`,
       description: skill.description,
       siteName: 'OpenClaw Directory',
-      publishedTime: skill.updatedAt,
-      modifiedTime: skill.updatedAt,
-      tags: skill.tags,
     },
     twitter: {
       card: 'summary',
@@ -59,42 +58,25 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     alternates: {
       canonical: skillUrl,
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
   }
-}
-
-export async function generateStaticParams() {
-  const skills = getSkills()
-  return skills.map((skill) => ({
-    slug: skill.id,
-  }))
 }
 
 export default async function SkillPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const skill = getSkill(slug)
+  const skill = await getSkillFromDB(slug)
 
   if (!skill) {
     notFound()
   }
 
   // Get related skills (same category, excluding current)
-  const relatedSkills = getSkills()
+  const allSkills = await getSkillsFromDB()
+  const relatedSkills = allSkills
     .filter((s) => s.category === skill.category && s.id !== skill.id)
     .slice(0, 3)
 
   // Get skills with similar tags
-  const similarByTag = getSkills()
+  const similarByTag = allSkills
     .filter((s) => 
       s.id !== skill.id && 
       s.tags.some(tag => skill.tags.includes(tag))
@@ -215,33 +197,8 @@ export default async function SkillPage({ params }: { params: Promise<{ slug: st
             </div>
           </div>
 
-          {/* Documentation Section */}
-          <div className="rounded-xl border border-[#1a1a1a] bg-[#0a0a0a] p-6">
-            <div className="mb-4 flex items-center gap-2">
-              <BookOpen className="h-5 w-5 text-[#666]" />
-              <h2 className="text-lg font-medium text-white">Documentation</h2>
-            </div>
-            <div className="prose prose-invert prose-sm max-w-none">
-              <p className="text-[#888]">
-                This skill provides {skill.description.toLowerCase()}
-              </p>
-              
-              <h3 className="mt-6 text-base font-medium text-white">Features</h3>
-              <div className="mt-3">
-                <SkillFeatures />
-              </div>
-
-              <h3 className="mt-6 text-base font-medium text-white">Usage</h3>
-              <p className="mt-3 text-[#888]">
-                After installation, the skill will be automatically available in your agent's context. 
-                Configure any required settings in your <code className="rounded bg-[#1a1a1a] px-1.5 py-0.5 font-mono text-xs text-[#a1a1a1]">TOOLS.md</code> file.
-              </p>
-
-              <div className="mt-6">
-                <SkillRequirements />
-              </div>
-            </div>
-          </div>
+          {/* Full Skill Content - Copy/Paste */}
+          <SkillContent content={skill.fullDescription || null} skillName={skill.name} />
 
           {/* Related Skills */}
           {similarByTag.length > 0 && (

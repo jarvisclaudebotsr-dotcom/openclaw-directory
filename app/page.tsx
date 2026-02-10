@@ -2,17 +2,31 @@ import Link from "next/link"
 import { CategoryNav } from "@/components/CategoryNav"
 import { SkillCard } from "@/components/SkillCard"
 import { HomeSearch } from "@/components/HomeSearch"
-import { getSkills, getFeaturedSkills, getLatestSkills, getCategories } from "@/lib/skills"
+import { getSkillsFromDB, getFeaturedSkillsFromDB, getLatestSkillsFromDB, getCategoriesFromDB } from "@/lib/skills-db"
 import { ArrowRight, Package, Download, Users, Github } from "lucide-react"
 
-export default function Home() {
-  const allSkills = getSkills()
-  const categories = getCategories()
-  const featured = getFeaturedSkills(6)
-  const latest = getLatestSkills(8)
+export const dynamic = 'force-dynamic'
+export const revalidate = 60
+
+export default async function Home() {
+  const allSkills = await getSkillsFromDB()
+  const categoriesDB = await getCategoriesFromDB()
+  const featured = await getFeaturedSkillsFromDB(6)
+  const latest = await getLatestSkillsFromDB(8)
+  
+  // Convert categories to expected format
+  const categories = categoriesDB.map(c => ({
+    id: c.id,
+    name: c.name,
+    description: `${c.count} skills`,
+    icon: '📦'
+  }))
   
   const totalInstalls = allSkills.reduce((sum, skill) => sum + (skill.installs || 0), 0)
   const totalSkills = allSkills.length
+
+  // If no featured, use top by installs
+  const displayFeatured = featured.length > 0 ? featured : allSkills.slice(0, 6)
 
   return (
     <main>
@@ -90,7 +104,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="grid-cards">
-            {featured.map((skill) => (
+            {displayFeatured.map((skill) => (
               <SkillCard key={skill.id} {...skill} featured />
             ))}
           </div>
