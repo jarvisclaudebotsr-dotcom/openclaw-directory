@@ -1,135 +1,136 @@
 # OpenClaw Directory
 
-Premium skills marketplace for OpenClaw agents. Browse, search, and purchase high-quality agent skills from verified creators.
+A minimal, cursor.directory-style skills directory for OpenClaw community skills.
 
-## 🚀 Features
+## Design Philosophy
 
-- **Browse Premium Skills**: Curated marketplace of production-ready agent skills
-- **Advanced Search**: Filter by category, price, rating, and compatibility
-- **Skill Details**: View documentation, demos, reviews, and changelog
-- **Secure Checkout**: Stripe integration for payments
-- **Instant Delivery**: Download skills immediately after purchase
-- **Creator Dashboard**: Manage your published skills and earnings
+- **Pure black** (#000000) - No gradients, no decorative elements
+- **Minimal & flat** - Information-dense, small fonts (12-14px)
+- **Fast & lightweight** - No heavy animations or complex interactions
+- **Mobile responsive** - 4 → 2 → 1 column grid
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-- **Frontend**: Next.js 14, React 18, TypeScript
-- **Styling**: Tailwind CSS
-- **Database**: Supabase (PostgreSQL)
-- **Payments**: Stripe
-- **Deployment**: Vercel
+- Next.js 14 (App Router)
+- TypeScript
+- Tailwind CSS
+- shadcn/ui components
+- Static JSON data
 
-## 📦 Database Schema
-
-```sql
--- Skills table
-create table skills (
-  id uuid primary key default uuid_generate_v4(),
-  name text not null,
-  slug text unique not null,
-  description text,
-  price decimal(10,2) not null,
-  category text not null,
-  creator_id uuid references auth.users(id),
-  downloads integer default 0,
-  rating decimal(2,1),
-  created_at timestamp with time zone default now()
-);
-
--- Purchases table
-create table purchases (
-  id uuid primary key default uuid_generate_v4(),
-  user_id uuid references auth.users(id),
-  skill_id uuid references skills(id),
-  price decimal(10,2) not null,
-  stripe_payment_id text,
-  created_at timestamp with time zone default now()
-);
-
--- Reviews table
-create table reviews (
-  id uuid primary key default uuid_generate_v4(),
-  skill_id uuid references skills(id),
-  user_id uuid references auth.users(id),
-  rating integer check (rating >= 1 and rating <= 5),
-  comment text,
-  created_at timestamp with time zone default now()
-);
-```
-
-## 🔧 Environment Variables
+## Development
 
 ```bash
-# Supabase
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-
-# Stripe
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
-STRIPE_SECRET_KEY=your_stripe_secret_key
-STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
-```
-
-## 📥 Installation
-
-```bash
-# Clone the repo
-git clone https://github.com/jarvisclaudebotsr-dotcom/openclaw-directory.git
-cd openclaw-directory
-
 # Install dependencies
 npm install
 
-# Set up environment variables
-cp .env.example .env.local
-# Edit .env.local with your credentials
-
 # Run development server
 npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
 
-## 🚢 Deployment
+Open [http://localhost:3000](http://localhost:3000) to see the site.
 
-Deployed on Vercel with automatic deployments from `main` branch.
+## Deploy to Vercel
 
-**Live URL**: TBD (pending deployment)
+### Option 1: Vercel CLI
 
-## 📝 API Routes
+```bash
+# Install Vercel CLI
+npm i -g vercel
 
-- `POST /api/skills` - Create new skill (authenticated)
-- `GET /api/skills` - List all skills
-- `GET /api/skills/[id]` - Get skill details
-- `POST /api/purchase` - Purchase a skill (authenticated)
-- `POST /api/webhook` - Stripe webhook handler
+# Deploy
+vercel
 
-## 🎯 Roadmap
+# Deploy to production
+vercel --prod
+```
 
-- [ ] Skill versioning and updates
-- [ ] API authentication for skill downloads
-- [ ] Creator earnings dashboard
-- [ ] Skill compatibility checker
-- [ ] User wishlists
-- [ ] Affiliate program
-- [ ] Skill bundles
+### Option 2: GitHub Integration
 
-## 🤝 Contributing
+1. Push code to GitHub
+2. Import project in Vercel dashboard
+3. Configure domain: `openclawdirectory.ai`
+4. Deploy automatically on every push
 
-1. Fork the repo
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open Pull Request
+### Environment Variables
 
-## 📄 License
+No environment variables needed - site uses static data from `data/skills.json`.
 
-MIT License - see LICENSE file for details
+## Project Structure
 
-## 🔗 Links
+```
+├── app/
+│   ├── page.tsx                 # Home page (featured + latest)
+│   ├── layout.tsx               # Root layout with header
+│   ├── skills/
+│   │   ├── page.tsx            # Browse all skills
+│   │   └── [slug]/page.tsx     # Skill detail page
+│   └── categories/
+│       └── [category]/page.tsx # Category view
+├── components/
+│   ├── Header.tsx              # Site header
+│   ├── SkillCard.tsx           # Skill card component
+│   ├── SearchBar.tsx           # Search input
+│   └── InstallCommand.tsx      # Install command with copy
+├── data/
+│   └── skills.json             # Skills database (static)
+├── lib/
+│   └── skills.ts               # Skills data helpers
+└── public/                     # Static assets
+```
 
-- **GitHub**: https://github.com/jarvisclaudebotsr-dotcom/openclaw-directory
-- **OpenClaw Docs**: https://docs.openclaw.ai
-- **Discord**: https://discord.gg/openclaw
+## Adding New Skills
 
----
+Edit `data/skills.json`:
 
-Built with ❤️ for the OpenClaw community
+```json
+{
+  "id": "skill-name",
+  "name": "skill-name",
+  "emoji": "🎯",
+  "description": "Short description (1-2 lines)",
+  "version": "1.0.0",
+  "category": "Development Tools",
+  "tags": ["tag1", "tag2"],
+  "githubUrl": "https://github.com/...",
+  "installs": 1000,
+  "updatedAt": "2026-02-08",
+  "featured": false
+}
+```
+
+## Features
+
+- ✅ Browse all skills (4-column grid)
+- ✅ Search skills (real-time filtering)
+- ✅ Category filtering
+- ✅ Skill detail pages
+- ✅ Install command with copy button
+- ✅ Mobile responsive
+- ✅ Pure black, minimal design
+
+## Design Specs
+
+```css
+Background: #000000 (pure black)
+Card: #0a0a0a
+Border: #1a1a1a
+Border Hover: #2a2a2a
+Text Primary: #ffffff
+Text Secondary: #a1a1a1
+Text Muted: #6b7280
+
+Fonts:
+- Body: 12-14px
+- Headings: 14-20px
+- Font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto'
+```
+
+## License
+
+MIT

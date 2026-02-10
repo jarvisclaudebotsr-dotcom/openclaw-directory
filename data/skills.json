@@ -1,0 +1,237 @@
+{
+  "skills": [
+    {
+      "id": "soul-personality",
+      "name": "soul-personality",
+      "emoji": "🧠",
+      "description": "Core personality and values system. Defines agent behavior with explicit instructions: 'be genuinely helpful, have opinions, be resourceful.'",
+      "version": "2.4.1",
+      "category": "Memory & Identity",
+      "tags": ["memory", "identity", "core"],
+      "githubUrl": "https://github.com/seedprod/openclaw-prompts-and-skills/blob/main/SOUL.md",
+      "installs": 18700,
+      "updatedAt": "2026-02-06",
+      "featured": true
+    },
+    {
+      "id": "memory-system",
+      "name": "memory-system",
+      "emoji": "💾",
+      "description": "File-based memory architecture. Reads memory/YYYY-MM-DD.md for recent context and MEMORY.md for long-term memories.",
+      "version": "1.8.3",
+      "category": "Memory & Identity",
+      "tags": ["memory", "persistence"],
+      "githubUrl": "https://github.com/seedprod/openclaw-prompts-and-skills/blob/main/CLAUDE.md",
+      "installs": 15200,
+      "updatedAt": "2026-02-05",
+      "featured": true
+    },
+    {
+      "id": "telegram-adapter",
+      "name": "telegram-adapter",
+      "emoji": "📱",
+      "description": "Minimal Telegram bot adapter. Connects messaging platforms to Claude Code in ~100 lines of Python.",
+      "version": "0.9.1",
+      "category": "Messaging Adapters",
+      "tags": ["telegram", "messaging", "python"],
+      "githubUrl": "https://github.com/seedprod/openclaw-prompts-and-skills/blob/main/telegram-claude-poc.py",
+      "installs": 8600,
+      "updatedAt": "2026-02-04",
+      "featured": true
+    },
+    {
+      "id": "git-workflow",
+      "name": "git-workflow",
+      "emoji": "🔀",
+      "description": "Automated git operations with semantic commits. Smart branching, PR management, and changelog generation.",
+      "version": "1.5.2",
+      "category": "Development Tools",
+      "tags": ["git", "automation", "devtools"],
+      "githubUrl": "https://github.com/example/git-workflow",
+      "installs": 6800,
+      "updatedAt": "2026-02-03",
+      "featured": true
+    },
+    {
+      "id": "api-testing",
+      "name": "api-testing",
+      "emoji": "🧪",
+      "description": "Automated API testing and validation. Generate test suites, run integration tests, validate responses against schemas.",
+      "version": "2.1.0",
+      "category": "Development Tools",
+      "tags": ["testing", "api", "validation"],
+      "githubUrl": "https://github.com/example/api-testing",
+      "installs": 5400,
+      "updatedAt": "2026-02-02",
+      "featured": false
+    },
+    {
+      "id": "image-generation",
+      "name": "image-generation",
+      "emoji": "🎨",
+      "description": "AI image generation workflow. Integrates with DALL-E, Stable Diffusion, and Midjourney APIs for automated creative content.",
+      "version": "1.2.4",
+      "category": "Creative & Media",
+      "tags": ["ai", "images", "creative"],
+      "githubUrl": "https://github.com/example/image-gen",
+      "installs": 4900,
+      "updatedAt": "2026-02-01",
+      "featured": false
+    },
+    {
+      "id": "web-scraper",
+      "name": "web-scraper",
+      "emoji": "🕷️",
+      "description": "Intelligent web scraping and data extraction. Handles dynamic content, pagination, and anti-bot measures automatically.",
+      "version": "3.0.1",
+      "category": "Research & Analysis",
+      "tags": ["scraping", "data", "automation"],
+      "githubUrl": "https://github.com/example/web-scraper",
+      "installs": 7200,
+      "updatedAt": "2026-01-31",
+      "featured": true
+    },
+    {
+      "id": "email-digest",
+      "name": "email-digest",
+      "emoji": "📧",
+      "description": "Daily email summarization and categorization. Prioritizes important messages, archives newsletters, suggests responses.",
+      "version": "1.6.0",
+      "category": "Automation & Tools",
+      "tags": ["email", "productivity", "automation"],
+      "githubUrl": "https://github.com/example/email-digest",
+      "installs": 3800,
+      "updatedAt": "2026-01-30",
+      "featured": false
+    },
+    {
+      "id": "code-review",
+      "name": "code-review",
+      "emoji": "👀",
+      "description": "Automated code review assistant. Analyzes PRs for bugs, style issues, security vulnerabilities, and suggests improvements.",
+      "version": "2.3.1",
+      "category": "Development Tools",
+      "tags": ["code-review", "pr", "quality"],
+      "githubUrl": "https://github.com/example/code-review",
+      "installs": 9100,
+      "updatedAt": "2026-01-29",
+      "featured": true
+    },
+    {
+      "id": "youtube-transcript",
+      "name": "youtube-transcript",
+      "emoji": "🎥",
+      "description": "Extract and summarize YouTube video transcripts. Generate notes, timestamps, and key insights from long-form content.",
+      "version": "1.4.2",
+      "category": "Research & Analysis",
+      "tags": ["youtube", "transcription", "research"],
+      "githubUrl": "https://github.com/example/youtube-transcript",
+      "installs": 5600,
+      "updatedAt": "2026-01-28",
+      "featured": false
+    },
+    {
+      "id": "slack-notifier",
+      "name": "slack-notifier",
+      "emoji": "💬",
+      "description": "Smart Slack notification manager. Filters noise, highlights important messages, and schedules digest summaries.",
+      "version": "0.8.0",
+      "category": "Messaging Adapters",
+      "tags": ["slack", "notifications", "productivity"],
+      "githubUrl": "https://github.com/example/slack-notifier",
+      "installs": 4200,
+      "updatedAt": "2026-01-27",
+      "featured": false
+    },
+    {
+      "id": "twitter-analyzer",
+      "name": "twitter-analyzer",
+      "emoji": "🐦",
+      "description": "Tweet performance analytics and content strategy. Tracks engagement, suggests optimal posting times, generates insights.",
+      "version": "1.9.0",
+      "category": "Research & Analysis",
+      "tags": ["twitter", "analytics", "social"],
+      "githubUrl": "https://github.com/example/twitter-analyzer",
+      "installs": 6300,
+      "updatedAt": "2026-01-26",
+      "featured": false
+    },
+    {
+      "id": "calendar-sync",
+      "name": "calendar-sync",
+      "emoji": "📅",
+      "description": "Multi-calendar synchronization and scheduling assistant. Detects conflicts, suggests meeting times, manages availability.",
+      "version": "2.0.3",
+      "category": "Automation & Tools",
+      "tags": ["calendar", "scheduling", "productivity"],
+      "githubUrl": "https://github.com/example/calendar-sync",
+      "installs": 7800,
+      "updatedAt": "2026-01-25",
+      "featured": false
+    },
+    {
+      "id": "markdown-publisher",
+      "name": "markdown-publisher",
+      "emoji": "📝",
+      "description": "Convert markdown to multiple formats. Publish to Medium, Dev.to, Hashnode, and personal blog from single source.",
+      "version": "1.3.5",
+      "category": "Automation & Tools",
+      "tags": ["markdown", "publishing", "content"],
+      "githubUrl": "https://github.com/example/markdown-publisher",
+      "installs": 4700,
+      "updatedAt": "2026-01-24",
+      "featured": false
+    },
+    {
+      "id": "voice-transcription",
+      "name": "voice-transcription",
+      "emoji": "🎤",
+      "description": "Real-time voice-to-text transcription. Supports meeting notes, voice memos, and multi-speaker identification.",
+      "version": "1.1.8",
+      "category": "Creative & Media",
+      "tags": ["voice", "transcription", "audio"],
+      "githubUrl": "https://github.com/example/voice-transcription",
+      "installs": 5900,
+      "updatedAt": "2026-01-23",
+      "featured": false
+    }
+  ],
+  "categories": [
+    {
+      "id": "memory-identity",
+      "name": "Memory & Identity",
+      "description": "Skills that define agent personality, memory systems, and identity",
+      "icon": "🧠"
+    },
+    {
+      "id": "messaging-adapters",
+      "name": "Messaging Adapters",
+      "description": "Connect OpenClaw to messaging platforms and communication tools",
+      "icon": "📱"
+    },
+    {
+      "id": "development-tools",
+      "name": "Development Tools",
+      "description": "Code review, testing, git workflows, and developer productivity",
+      "icon": "🔧"
+    },
+    {
+      "id": "creative-media",
+      "name": "Creative & Media",
+      "description": "Image generation, video processing, audio transcription, and creative tools",
+      "icon": "🎨"
+    },
+    {
+      "id": "research-analysis",
+      "name": "Research & Analysis",
+      "description": "Web scraping, data extraction, content analysis, and research automation",
+      "icon": "🔍"
+    },
+    {
+      "id": "automation-tools",
+      "name": "Automation & Tools",
+      "description": "General productivity, scheduling, email management, and workflow automation",
+      "icon": "⚡"
+    }
+  ]
+}
