@@ -117,6 +117,40 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Quick Links */}
+      <section className="section border-b border-[#1a1a1a]">
+        <div className="container">
+          <div className="mx-auto max-w-[800px]">
+            <h2 className="mb-6 text-center text-xl font-medium text-white">Popular Directories</h2>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <Link 
+                href="/claude-skills" 
+                className="group rounded-xl border border-[#1a1a1a] bg-[#0a0a0a] p-6 transition-colors hover:border-[#333] hover:bg-[#111]"
+              >
+                <h3 className="mb-2 font-semibold text-white group-hover:text-purple-400">
+                  Claude Skills →
+                </h3>
+                <p className="text-sm text-[#888]">
+                  Skills optimized for Claude Code and Claude.ai agents
+                </p>
+              </Link>
+              
+              <Link 
+                href="/ai-agent-tools" 
+                className="group rounded-xl border border-[#1a1a1a] bg-[#0a0a0a] p-6 transition-colors hover:border-[#333] hover:bg-[#111]"
+              >
+                <h3 className="mb-2 font-semibold text-white group-hover:text-yellow-400">
+                  AI Agent Tools →
+                </h3>
+                <p className="text-sm text-[#888]">
+                  Complete directory of tools for all AI coding agents
+                </p>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="section">
         <div className="container">

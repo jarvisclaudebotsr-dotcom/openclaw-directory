@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { BackToTop } from '@/components/BackToTop'
 import { Providers } from './providers'
 import { Analytics } from '@vercel/analytics/react'
 import { SiteStructuredData } from '@/components/SiteStructuredData'
@@ -99,6 +100,7 @@ export default function RootLayout({
             </main>
             <Footer />
           </div>
+          <BackToTop />
           <Analytics />
         </Providers>
       </body>

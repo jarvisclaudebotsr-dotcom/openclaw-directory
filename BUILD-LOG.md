@@ -120,3 +120,91 @@
 - No console errors in dev mode
 
 **Next:** Continue with loading states and performance optimizations
+
+---
+
+## Session 2: Performance & UX Polish (2026-02-09)
+
+### ✅ Loading States (Priority 6)
+**Commit:** `feat: add loading skeletons and Back to Top button`
+
+**Changes:**
+- Created `SkillCardSkeleton` component with pulse animation
+- Created `LoadingGrid` component for loading states
+- Matches card design exactly (full and compact versions)
+- Smooth pulse animation for perceived performance
+
+**Impact:**
+- Better perceived performance during data fetching
+- Professional loading states
+- Reduces user frustration during loading
+
+**Files Created:**
+- `components/SkillCardSkeleton.tsx`
+- `components/LoadingGrid.tsx`
+
+---
+
+### ✅ Back to Top Button (Priority 6)
+**Status:** Implemented
+
+**Changes:**
+- Added floating "Back to Top" button (appears after 500px scroll)
+- Smooth scroll animation
+- Subtle hover effects matching site design
+- Fixed positioning (bottom-right)
+
+**Impact:**
+- Better UX on long pages (skill listings, categories)
+- Easy navigation back to top
+- Minimal, unobtrusive design
+
+**Files Created:**
+- `components/BackToTop.tsx`
+
+**Files Modified:**
+- `app/layout.tsx`
+
+---
+
+### ✅ Enhanced 404 Page (Priority 6)
+**Status:** Implemented
+
+**Changes:**
+- Created custom 404 page with helpful navigation
+- Added search icon illustration
+- Quick links to home and browse skills
+- Link to report issues on GitHub
+- Clean, minimal design matching site aesthetic
+
+**Impact:**
+- Better user experience when pages don't exist
+- Guides users back to content
+- Professional error handling
+
+**Files Created:**
+- `app/not-found.tsx`
+
+---
+
+### ✅ Breadcrumbs Component (Priority 6)
+**Status:** Implemented
+
+**Changes:**
+- Created reusable `Breadcrumbs` component
+- Chevron separators
+- Hover effects on links
+- Accessible with aria-label
+- Current page highlighted in white
+
+**Impact:**
+- Better navigation context
+- Improves SEO
+- User-friendly wayfinding
+
+**Files Created:**
+- `components/Breadcrumbs.tsx`
+
+---
+
+**Next:** Category page enhancements and skill detail improvements
