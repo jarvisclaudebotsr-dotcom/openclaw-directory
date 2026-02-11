@@ -39,6 +39,9 @@ export async function Header() {
           <Link href="/blog" className="text-sm text-[#a3a3a3] transition-colors hover:text-white">
             Blog
           </Link>
+          <Link href="/advertise" className="text-sm text-[#a3a3a3] transition-colors hover:text-white">
+            Advertise
+          </Link>
           <a
             href="https://docs.clawd.bot"
             target="_blank"

@@ -42,6 +42,13 @@ export function MobileMenu() {
               >
                 Categories
               </Link>
+              <Link
+                href="/advertise"
+                onClick={() => setIsOpen(false)}
+                className="rounded-md px-4 py-3 text-sm text-white transition-colors hover:bg-[#171717]"
+              >
+                Advertise
+              </Link>
               <a
                 href="https://docs.clawd.bot"
                 target="_blank"
